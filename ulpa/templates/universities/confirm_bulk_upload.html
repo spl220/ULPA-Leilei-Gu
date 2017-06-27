@@ -1,0 +1,90 @@
+{% extends "nav_base.html" %}
+
+{% block title %}
+    Confirm universities bulk upload
+{% endblock title %}
+
+{% block content %}
+
+<h2>Confirm Bulk Upload</h2>
+
+    <hr>
+
+    {% if not results %}
+        <p>
+            We were not able to generate any records from the file you uploaded. Please check your file and try again.
+        </p>
+    {% else %}
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th width="30px">Row</th>
+                    <th width="100%">Data Entered</th>
+                    <th width="50px">Status</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            {% for result in results %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>
+                        <table class="table table-condensed table-inner">
+                            <tr>
+                                <th width="30px">Name</th>
+                                <td>{{result.raw_data.name}}</td>
+                            </tr>
+                            <tr>
+                                <th width="30px">URL</th>
+                                <td>{{result.raw_data.url}}</td>
+                            </tr>
+                            <tr>
+                                <th width="30px">Cross Institutional URL</th>
+                                <td>{{result.raw_data.cross_institutional_url}}</td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td>
+                        {% if result.errors %}
+                            <p class="text-error"><strong>Error</strong></p>
+                        {% elif result.university.warnings %}
+                            <p class="text-warning"><strong>Warning</strong></p>
+                        {% else %}
+                            <p class="text-success"><strong>OK</strong></p>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if result.errors %}
+                            <ul class="details-notification-list">
+                                {% for error in result.errors %}
+                                    <li><span class="error-icon"></span> {{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% elif result.university.warnings %}
+                            <ul class="details-notification-list">
+                                {% for warning in result.university.warnings %}
+                                    <li><span class="warning-icon"></span> {{ warning }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                            <em>No problems found</em>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+
+    <hr>
+
+    <form action="./" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {% if bulk_upload.errors or not bulk_upload.results %}
+            <input type="submit" name="submit_cancel" class="btn btn-large" value="Try Again">
+        {% else %}
+            <input type="submit" name="submit_cancel" class="btn btn-large" value="Cancel">
+            <input type="submit" name="submit_confirm" class="btn btn-large btn-primary" value="Confirm">
+        {% endif %}
+    </form>
+
+{% endblock %}

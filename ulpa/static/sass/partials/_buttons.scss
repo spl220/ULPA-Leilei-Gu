@@ -1,0 +1,50 @@
+.btn-ulpa{
+	width: 100%;
+	color: $default-text;
+	background-color: $primary_blue;
+	@include border-radius(20px);
+
+	&:hover {
+		background-color: tint($primary_orange, 10%);
+	}
+	&:active, &:focus {
+		outline: none;
+	}
+	&.active {
+		color: $alt-text;
+		background-color: #235185;
+	}
+	&.next, &.back {
+		@include border-radius(40px);
+		width: 90px;
+		height: 55px;
+	}
+}
+
+.btn-group .btn-university {
+	@extend .btn-ulpa;
+	background-color: $default_background; 
+	color: $alt-text;
+
+	&.active {
+		color: $default-text;
+	}
+}
+
+.btn {
+	text-shadow: none;
+}
+
+.btn-search-by {
+  @extend .btn-default;
+  height: 75px;
+  width: 100%;
+  background-color: $home-page-search-buttons-color;
+  border-radius: 40px;
+  margin-top: 35px;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+}

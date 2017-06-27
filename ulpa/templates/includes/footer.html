@@ -1,0 +1,103 @@
+{% load markdown_deux_tags %}
+
+<footer class="footer">
+  	<div class="container">
+    	<div class="row">
+    		<div class="col-xs-12 col-sm-3 col-sm-push-9 social-media">
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-5 col-xs-4 col-xs-offset-4 facebook">
+        			    <a href="https://www.facebook.com/UniversityLanguagesPortalAustralia"
+                           class=""
+                           target="_blank"
+                           onclick="trackOutboundLink('https://www.facebook.com/UniversityLanguagesPortalAustralia'); return false;">
+                            Facebook
+                        </a>
+                    </div>
+                    <!--<div class="col-xs-2 twitter">-->
+        			    <!--<a href="" class="">Twitter</a>-->
+                    <!--</div>-->
+                    <!--<div class="col-xs-2 instagram">-->
+        			    <!--<a href="" class="">Instagram</a>-->
+                    <!--</div>-->
+                </div>
+    		</div>
+            <div class="col-xs-12 col-sm-9 col-sm-pull-3 legal">
+                <div class="row">
+                    <div class="col-xs-12">{{ site_configuration.copyright_statement|default:"<< home_page_content >>"|markdown }}</div>
+                </div>
+                <div class="legal-links row">
+                    <div class="col-xs-12">
+                        <a href="" data-toggle="modal" data-target="#privacyPolicyModal">Privacy Policy</a>
+
+                        <a href="" data-toggle="modal" data-target="#disclaimerStatementModal">Disclaimer Statement</a>
+
+                        <a href="" data-toggle="modal" data-target="#termsOfUseStatementModal">Terms of Use Statement</a>
+                    </div>
+                </div>
+            </div>
+    	</div>
+  	</div>
+</footer>
+
+{% block modal %}
+
+
+    <div class="modal fade" id="privacyPolicyModal" tabindex="-1" role="dialog" aria-labelledby="Privacy Policy">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="privacyPolicyLabel">Privacy Policy Statement</h4>
+          </div>
+          <div class="modal-body">
+            {{ site_configuration.privacy_policy|default:"<< privacy_policy_content >>"|markdown }}
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="disclaimerStatementModal" tabindex="-1" role="dialog" aria-labelledby="Disclaimer Statement">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="disclaimerStatementlabel">Disclaimer Statement</h4>
+          </div>
+          <div class="modal-body">
+            {{ site_configuration.disclaimer_statement|default:"<< disclaimer_statement_content >>"|markdown }}
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="termsOfUseStatementModal" tabindex="-1" role="dialog" aria-labelledby="Terms of Use Statement">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="termsOfUseStatementLabel">Terms of Use Statement</h4>
+          </div>
+          <div class="modal-body">
+              <div class="text-center">
+                <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+              </div>
+              <br>
+            {{ site_configuration.terms_of_use_statement|default:"<< terms_of_use_statment_content >>"|markdown }}
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+{% endblock modal %}

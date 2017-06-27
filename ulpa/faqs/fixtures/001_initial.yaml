@@ -1,0 +1,9 @@
+- fields: {answer: It is this., created: !!timestamp '2015-06-04 04:35:02.029363+00:00',
+    faq_category: 1, modified: !!timestamp '2015-06-04 04:35:02.029393+00:00', question: 'What
+      is an FAQ?'}
+  model: faqs.faq
+  pk: 2
+- fields: {created: !!timestamp '2015-06-04 04:31:55.179255+00:00', modified: !!timestamp '2015-06-04
+      04:31:55.179284+00:00', name: Obvious Questions}
+  model: faqs.faqcategory
+  pk: 1

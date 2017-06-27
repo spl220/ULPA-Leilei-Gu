@@ -1,0 +1,229 @@
+@import url(http://fonts.googleapis.com/css?family=Asap:400,700);
+@import url(http://fonts.googleapis.com/css?family=Roboto:500,900,100,300,700,400);
+
+$font-family-primary: 'Asap', sans-serif;
+$font-family-secondary: 'Roboto', sans-serif;
+$font-size-primary: 14px;
+
+* {
+	font-family: $font-family-primary;
+	font-size: $font-size-primary;
+}
+
+label {
+	font-family: $font-family-secondary;
+	color: $label-primary-color;
+	font-weight: 400; 
+}
+
+h1 {
+	font-family: $font-family-primary;
+	font-weight: 700;
+	-webkit-font-smoothing: antialiased;
+}
+
+a {
+	-webkit-font-smoothing: antialiased;
+}
+
+.btn-search-by {
+	font-family: $font-family-primary;
+	color: $label-primary-color;
+	font-weight: 700;
+	font-size: 20px;
+	vertical-align: middle;
+	line-height: 60px;
+	text-align: left;
+	text-indent: 31px;
+}
+
+.btn-ulpa {
+	font-family: $font-family-primary;
+
+	&.next, &.back {
+		color: $default-text;
+		font-weight: 700;
+		font-size: 18px;
+	}
+}
+
+.step {
+	& ul {
+		@extend .list-unstyled;
+
+		& label {
+			color: $alt_text;
+		}
+	}
+}
+
+.search-results {
+
+	& .subject {
+
+		& .subject-university {
+
+			& .state {
+				color: $default_text;
+			}
+		}
+
+		& .subject-heading {
+			color: $default-text;
+			font-family: $font-family-secondary;
+
+			& p {
+				&.title {
+					font-size: 14px;
+					font-weight: 500;
+				}
+				&.language {
+					font-size: 14px;
+					font-weight: 400;
+				}
+			}
+		}
+
+		& .subject-information {
+			
+
+		}
+	}
+}
+
+// Home page heading
+.home-page-heading {
+  color: $default_text;
+  text-transform: uppercase;
+
+}
+
+// Sponsors heading
+.funded-by {
+	font-family: $font-family-secondary;
+}
+
+// FAQ Page text
+.faq {
+    
+    & a {
+    	font-family: $font-family-secondary;
+    	text-decoration: none;
+    }
+
+    & h4 {
+    	font-family: $font-family-secondary;
+	    color: #235185;
+    }
+
+	& #nav {
+		& li a {
+			color: $alt-text;
+		}
+		& .active {
+			color: $primary-blue;
+			border-left: 3px solid;
+		}
+	}
+}
+
+// About page text
+.about {
+	font-family: "Roboto", sans-serif;
+	
+	& h1 {
+		text-transform: uppercase;
+	}
+
+	& h2 {
+		font-family: $font-family-secondary;
+		color: $primary-blue;
+		font-size: 24px;
+	}
+
+	& h3 {
+		font-family: $font-family-secondary;
+	}
+
+	& h4 {
+		font-family: $font-family-secondary;
+	}
+}
+
+// Other uni page
+.other-uni {
+	font-family: "Roboto", sans-serif;
+	
+	& h1 {
+		text-transform: uppercase;
+	}
+
+	& h2 {
+		font-family: $font-family-secondary;
+		color: $primary-blue;
+		font-size: 24px;
+	}
+
+	& h3 {
+		font-family: $font-family-secondary;
+	}
+
+	& h4 {
+		font-family: $font-family-secondary;
+	}
+}
+
+// What language page
+.what-languages {
+
+	.nav {
+		& h5 {
+			color: $primary-blue;
+			padding: 0 15px
+		}
+		& li a {
+			color: $alt-text;
+		}
+	}
+}
+
+// Where can I study indigenous languages
+.indigenous-languages {
+	& h1 {
+		text-transform: uppercase;
+	}
+	& h2 {
+		font-family: $font-family-secondary;
+		color: $primary-blue;
+		font-size: 24px;
+	}
+
+	& h3 {
+		font-family: $font-family-secondary;
+	}
+
+	& h4 {
+		font-family: $font-family-secondary;
+	}
+}
+
+//  Why study languages page
+.why-study {
+	& h1 {
+		text-transform: uppercase
+	}
+	& h2 {
+		font-family: $font-family-secondary;
+		color: $primary-blue;
+		font-size: 24px;
+	}
+
+	& h3 {
+		font-family: $font-family-secondary;
+	}
+
+	& h4 {
+		font-family: $font-family-secondary;
+	}
+
+}

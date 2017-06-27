@@ -1,0 +1,130 @@
+{% extends "nav_base.html" %}
+
+{% block title %}
+    Confirm subjects bulk upload
+{% endblock title %}
+
+{% block content %}
+
+<h2>Confirm Bulk Upload</h2>
+
+    <hr>
+
+    {% if not results %}
+        <p>
+            We were not able to generate any records from the file you uploaded. Please check your file and try again.
+        </p>
+    {% else %}
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th width="30px">Row</th>
+                    <th width="320px">Data Entered</th>
+                    <th width="50px">Status</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            {% for result in results %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>
+                        <table class="table table-condensed table-inner">
+                            <tr>
+                                <th width="100px">Language</th>
+                                <td>{{result.raw_data.language}}</td>
+                            </tr>
+                            <tr>
+                                <th width="100px">University</th>
+                                <td>{{result.raw_data.university}}</td>
+                            </tr>
+                            <tr>
+                                <th width="100px">State</th>
+                                <td>{{result.raw_data.state}}</td>
+                            </tr>
+                            <tr>
+                                <th width="100px">Subject Code</th>
+                                <td>{{result.raw_data.code}}</td>
+                            </tr>
+                            <tr>
+                                <th width="100px">Title</th>
+                                <td>{{result.raw_data.title}}</td>
+                            </tr>
+                            <tr>
+                                <th width="100px">Next Offered</th>
+                                <td>{{result.raw_data.next_offered}}</td>
+                            </tr>
+                            <tr>
+                                <th width="100px">Intensity</th>
+                                <td>{{result.raw_data.intensity}}</td>
+                            </tr>
+                            <tr>
+                                <th width="100px">Study Choice</th>
+                                <td>{{result.raw_data.study_choice}}</td>
+                            </tr>
+                            <tr>
+                                <th width="100px">Prerequisite Language</th>
+                                <td>{{result.raw_data.prerequisite}}</td>
+                            </tr>
+                            <tr>
+                                <th width="100px">Non beginner</th>
+                                <td>{{result.raw_data.non_beginner_level_available}}</td>
+                            </tr>
+                            <tr>
+                                <th width="100px">Other University</th>
+                                <td>{{result.raw_data.other_university}}</td>
+                            </tr>
+                            <tr>
+                                <th width="100px">URL</th>
+                                <td>{{result.raw_data.url}}</td>
+                            </tr>
+                            <tr>
+                                <th width="100px">Notes</th>
+                                <td>{{result.raw_data.notes}}</td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td>
+                        {% if result.errors %}
+                            <p class="text-error"><strong>Error</strong></p>
+                        {% elif result.subject.warnings %}
+                            <p class="text-warning"><strong>Warning</strong></p>
+                        {% else %}
+                            <p class="text-success"><strong>OK</strong></p>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if result.errors %}
+                            <ul class="details-notification-list">
+                                {% for error in result.errors %}
+                                    <li><span class="error-icon"></span> {{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% elif result.subject.warnings %}
+                            <ul class="details-notification-list">
+                                {% for warning in result.subject.warnings %}
+                                    <li><span class="warning-icon"></span> {{ warning }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                            <em>No problems found</em>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+
+    <hr>
+
+    <form action="./" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {% if bulk_upload.errors or not bulk_upload.results %}
+            <input type="submit" name="submit_cancel" class="btn btn-large" value="Try Again">
+        {% else %}
+            <input type="submit" name="submit_cancel" class="btn btn-large" value="Cancel">
+            <input type="submit" name="submit_confirm" class="btn btn-large btn-primary" value="Confirm">
+        {% endif %}
+    </form>
+
+{% endblock %}

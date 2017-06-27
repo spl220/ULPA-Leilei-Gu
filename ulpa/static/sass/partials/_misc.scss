@@ -1,0 +1,87 @@
+
+// Language search accordion
+$accordion-checkbox-border-radius: 50%;
+
+.custom-checkbox {
+	@include border-radius($accordion-checkbox-border-radius);
+	position: absolute;
+}
+
+.step .panel {
+	& .panel-heading {
+		position: relative;
+		background-image: none;
+		&:hover {
+			cursor: pointer;
+			color: $alt_text;
+			background-color: $primary_orange;
+		}
+		&.active {
+			color: $default_text;
+			background-color: $primary_blue;
+		}
+
+		& .panel-title {
+			text-decoration: none;
+		}
+
+		& .custom-checkbox-background {
+			@extend .custom-checkbox;
+			background-color: $default_background;
+			height: 24px;
+			width: 24px;
+			right: 10px;
+			top: 6px;
+			border: 1px solid $accordion-checkbox-border;
+		}
+
+		& .custom-checkbox-selected {
+			@extend .custom-checkbox;
+			background-color: $primary_blue;
+			height: 10px;
+			width: 10px;
+			right: 17px;
+			top: 13px;
+		}
+	}
+	& * {
+		border-radius: 0;
+	}
+}
+
+.search-results {
+
+	.subject {
+		.subject-box {
+			border: solid 1px $search-box-border;
+		}
+		& .subject-university {
+		}
+		& .university {
+		}
+		& .state {
+			background-color: $primary_orange;
+		}
+	
+
+		& .subject-heading {
+			background-color: $search-box-heading-background;
+		}
+
+		& .subject-information {
+			& table {
+				& td {
+					border-left: 1px solid $search-box-border; 
+				}
+			}
+		}
+	}
+
+	& .subject-more {
+		& a {
+			background-color: $primary-blue;
+			color: $default_text;
+			@include border-radius(25px);
+		}
+	}
+}

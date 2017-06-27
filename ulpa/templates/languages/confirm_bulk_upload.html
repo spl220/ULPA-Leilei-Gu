@@ -1,0 +1,111 @@
+{% extends "nav_base.html" %}
+
+{% block title %}
+    Confirm language bulk upload
+{% endblock title %}
+
+{% block content %}
+
+<h2>Confirm Bulk Upload</h2>
+
+    <hr>
+
+    {% if not results %}
+        <p>
+            We were not able to generate any records from the file you uploaded. Please check your file and try again.
+        </p>
+    {% else %}
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th width="30px">Row</th>
+                    <th width="100%">Data Entered</th>
+                    <th width="50px">Status</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            {% for result in results %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>
+                        <table class="table table-condensed table-inner">
+                            <tr>
+                                <th width="30px">Language Name</th>
+                                <td>{{result.raw_data.name}}</td>
+
+                                <th width="30px">Alternative Name</th>
+                                <td>{{result.raw_data.alternative_name}}</td>
+                            </tr>
+                            <tr>
+                                <th width="30px">Description</th>
+                                <td>{{result.raw_data.description}}</td>
+
+                                <th width="30px">Individual Language Page</th>
+                                <td>{{result.raw_data.individual_language}}</td>
+                            </tr>
+                            <tr>
+                                <th width="30px">How Widely Taught</th>
+                                <td>{{result.raw_data.how_widely_taught}}</td>
+
+                                <th width="30px">ABS Census Data</th>
+                                <td>{{result.raw_data.abs_data}}</td>
+                            </tr>
+                            <tr>
+                                <th width="30px">ABS Classification</th>
+                                <td>{{result.raw_data.abs_classification}}</td>
+                                <th></th>
+                                <td></td>
+                            </tr>
+                                <th width="30px">Language Category</th>
+                                <td>{{result.raw_data.category}}</td>
+
+                                <th width="30px">Language Category Description</th>
+                                <td>{{result.raw_data.category_description}}</td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td>
+                        {% if result.errors %}
+                            <p class="text-error"><strong>Error</strong></p>
+                        {% elif result.language.warnings %}
+                            <p class="text-warning"><strong>Warning</strong></p>
+                        {% else %}
+                            <p class="text-success"><strong>OK</strong></p>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if result.errors %}
+                            <ul class="details-notification-list">
+                                {% for error in result.errors %}
+                                    <li><span class="error-icon"></span> {{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% elif result.subject.warnings %}
+                            <ul class="details-notification-list">
+                                {% for warning in result.language.warnings %}
+                                    <li><span class="warning-icon"></span> {{ warning }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                            <em>No problems found</em>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+
+    <hr>
+
+    <form action="./" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {% if bulk_upload.errors or not bulk_upload.results %}
+            <input type="submit" name="submit_cancel" class="btn btn-large" value="Try Again">
+        {% else %}
+            <input type="submit" name="submit_cancel" class="btn btn-large" value="Cancel">
+            <input type="submit" name="submit_confirm" class="btn btn-large btn-primary" value="Confirm">
+        {% endif %}
+    </form>
+
+{% endblock %}

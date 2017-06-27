@@ -1,0 +1,20 @@
+# Test dependencies go here.
+-r base.txt
+coverage==4.0a5
+flake8==2.4.0
+
+# Lettuce, for BDD
+-e git://github.com/renanivo/lettuce.git@acb90ca1ff277154c5b0f83a237e0cc1ae4f05c3#egg=lettuce-dev
+-e git://github.com/jricardo27/lettuce_webdriver.git@f9f38b15494f66bf7c1387fca0ebf2629c61e952#egg=lettuce_webdriver-dev
+selenium==2.45.0
+
+# For debugging
+ipdb==0.8
+ipdbplugin==1.4
+ipython==2.2.0
+
+# PEP8 and pylint
+astroid==1.3.2
+pep8==1.5.7
+pylint==1.4
+pylint-mccabe==0.1.3

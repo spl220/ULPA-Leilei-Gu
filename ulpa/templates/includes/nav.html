@@ -1,0 +1,30 @@
+<nav class="navbar navbar-default">
+	<div class="container navigation">
+	    <div class="navbar-header">
+	    	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav-collapse" aria-expanded="false">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	    </div>
+
+
+	    <div class="collapse navbar-collapse" id="main-nav-collapse">
+		    <ul class="nav navbar-nav custom-nav-pills">
+				{% if request.user.is_superuser %}<li><a href="{% url 'languages:languages-bulk-upload' %}" {% ifequal active_tab 'bulk-upload' %}class="active"{% endifequal %}>BULK UPLOAD</a></li>{% endif %}
+		      	<li><a href="{% url 'core:home' %}" {% ifequal active_tab 'home' %}class="active"{% endifequal %}>HOME</a></li>
+				<li><a href="{% url 'core:about' %}" {% ifequal active_tab 'about' %}class="active"{% endifequal %}>ABOUT</a></li>
+				<li><a href="{% url 'faqs:faqs' %}" {% ifequal active_tab 'faq' %}class="active"{% endifequal %}>FAQ</a></li>
+				<li><a href="{% url 'core:contact' %}" {% ifequal active_tab 'contact' %}class="active"{% endifequal %}>CONTACT</a></li>
+		    </ul>
+	    </div>
+	 </div>
+     <div class="container-fluid logo-banner">
+     	<div class="container">
+     		<a href="/">
+     			<div class="logo"></div>
+ 			</a>
+     	</div>
+    </div>
+</nav>

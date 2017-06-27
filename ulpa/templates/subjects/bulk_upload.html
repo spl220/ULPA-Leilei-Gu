@@ -1,0 +1,30 @@
+{% extends "nav_base.html" %}
+
+{% block title %}
+    Subjects bulk upload
+{% endblock title %}
+
+{% block nav %}
+    {% include "includes/nav.html" with active_tab='bulk-upload' %}
+{% endblock nav %}
+
+{% block content %}
+{% include 'includes/upload_nav.html' %}
+<div class="row">
+    <div class="col-xs-12">
+        <div class="row">
+            <h1 class="col-xs-12">Subject Bulk Upload</h1>
+            <p class="col-xs-6 bg-warning text-warning">Please ensure the languages and universities are up to date prior to uploading subjects</p>
+        </div>
+        <div class="row">
+            <form method="post" class="col-xs-6 form-horizontal" action="./" enctype="multipart/form-data" id="add-form">
+                {% csrf_token %}
+                <div class="bulk-upload">
+                    {{form.xlsx_file}}
+                </div>
+                <input id="upload" type='submit' class="btn btn-default " value="Upload">
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

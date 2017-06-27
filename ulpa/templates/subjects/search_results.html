@@ -1,0 +1,85 @@
+{% extends "nav_base.html" %}
+{% load staticfiles i18n %}
+{% load bootstrap_pagination %}
+
+{% block title %}
+    Subject Search Results
+{% endblock title %}
+
+{% block content %}
+
+
+<div class="search-results row">
+
+    <h1 class="col-xs-12">YOUR SEARCH RESULTS</h1>
+
+    <div class="search-by-buttons hidden-xs hidden-sm col-sm-12">
+        <div class="col-xs-6">
+            <a class="btn btn-search-by" href="{% url 'languages:language-search' %}">NEW SEARCH BY LANGUAGE</a>
+        </div>
+        <div class="col-xs-6">
+            <a class="btn btn-search-by" href="{% url 'universities:university-search' %}">NEW SEARCH BY UNIVERSITY</a>
+        </div>
+    </div>
+    <div class="search-by-buttons visible-xs-block visible-sm-block col-xs-12">
+        <li class="list-unstyled">
+            <a class="btn btn-search-by" href="{% url 'languages:language-search' %}">NEW SEARCH BY LANGUAGE <div class="search-arrow "></div></a>
+        </li>
+        <li class="list-unstyled">
+            <a class="btn btn-search-by" href="{% url 'universities:university-search' %}">NEW SEARCH BY UNIVERSITY <div class="search-arrow "></div></a>
+        </li>
+    </div>
+
+    {% if subjects %}
+        <div class="sort col-xs-12">
+            <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="sortDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    Sort by: {{sort_order|default:"Language"|title}}
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="sortDropdown">
+                    <li><a href="{% url 'subjects:subject-search-results' %}?{{search_parameters.urlencode}}&amp;sort_by=language">Language</a></li>
+                    <li><a href="{% url 'subjects:subject-search-results' %}?{{search_parameters.urlencode}}&amp;sort_by=university">University</a></li>
+                </ul>
+                <a href="{% url 'subjects:printable-subject-search-results' %}?{{search_parameters.urlencode}}" class="btn btn-default" type="button" id="print" aria-labelledby="printResults" aria-expanded="true" target="_blank">
+                    Print View
+                </a>
+            </div>
+        </div>
+    {% endif %}
+
+    {% for subject in subjects %}
+        {% include 'subjects/includes/search_results_subject.html' with subject=subject%}
+    {% empty %}
+        <div class="col-xs-12">
+            <h2>No Subjects Found</h2>
+        </div>
+    {% endfor %}
+</div>
+
+    {% if subjects %}
+
+    <div class="row">
+        <div class="step-links col-xs-12 visible-xs visible-sm text-center">
+            {% bootstrap_paginate subjects range=5 %}
+        </div>
+        <div class="step-links col-xs-12 hidden-xs hidden-sm text-center">
+            {% bootstrap_paginate subjects range=10 %}
+        </div>
+    </div>
+
+    <div class="new-search visible-xs-block visible-sm-block row">
+        <li class="list-unstyled col-xs-12">
+            <a class="btn btn-search-by" href="{% url 'languages:language-search' %}">NEW SEARCH BY LANGUAGE <div class="search-arrow "></div></a>
+        </li>
+        <li class="list-unstyled col-xs-12">
+            <a class="btn btn-search-by" href="{% url 'universities:university-search' %}">NEW SEARCH BY UNIVERSITY <div class="search-arrow "></div></a>
+        </li>
+    </div>
+    {% endif %}
+{% block extra_scripts %}
+
+    <script src="{% static 'js/search_results.js' %}"></script>
+{% endblock extra_scripts %}
+
+{% endblock %}

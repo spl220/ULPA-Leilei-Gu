@@ -1,0 +1,82 @@
+.navigation {
+
+}
+
+//Banner on home page
+.logo-banner {
+  min-height: 78px;
+  border-bottom: solid 10px $banner-border;
+  background-image: url("../images/banner.png");
+  background-repeat: repeat-x;
+
+  & .logo {
+    background-image: url("../images/logo.png");
+    height: 198px;
+    width: 198px;
+    position: absolute;
+    top: 15px;
+    @media (max-width: $screen-sm) {
+      width: 108px;
+      height: 108px;
+      background-size: contain;
+    }
+  }
+}
+
+// Navbar
+.navbar {
+  @extend .navbar;
+
+  min-height: 72px;
+  margin: 0;
+  border: 0;
+  @include border-radius(0);
+  background-color: $nav-background;
+
+}
+
+.navbar .custom-nav-pills {
+  float: right;
+  padding: 15px;
+}
+
+.navbar .navigation .custom-nav-pills li a {
+  @extend a;
+  @extend .nav-pills;
+
+  @include border-radius(20px);
+
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  text-align: center;
+  color: $primary-color;
+  cursor: auto;
+
+  &.active {
+    background-color: $primary_blue;
+    color: $primary-color;
+  }
+
+  &:hover {
+  	color: $primary-color;
+  	text-decoration: none;
+  }
+}
+
+
+// Footer
+.footer {
+  position: absolute;
+
+  bottom: 0;
+
+  min-height: 90px;
+  width: 100%;
+
+  background-color: $nav-background;
+
+  @media print {
+    display: none;
+  }
+}

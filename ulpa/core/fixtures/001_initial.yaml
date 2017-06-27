@@ -1,0 +1,11 @@
+- fields: {about_page_content: '### About Page Content', about_page_heading: '# The
+      About Page!', active: true, created: !!timestamp '2015-06-05 01:09:59.495562+00:00',
+    creative_commons_statement: '', disclaimer_statement: '', home_page_content: '######
+      HOME PAGE CONTENT', home_page_heading: '# Home Page Heading!', liability_statement: '',
+    modified: !!timestamp '2015-06-05 02:18:27.911243+00:00', name: ULPA, other_university_content: '',
+    other_university_heading: '', page_not_found_content: '', privacy_policy: '',
+    terms_of_use_statement: '', what_languages_can_study_content: '', what_languages_can_study_heading: '',
+    where_can_study_indigenous_languages_content: '', where_can_study_indigenous_languages_heading: '',
+    why_study_languages_content: '', why_study_languages_heading: ''}
+  model: core.siteconfiguration
+  pk: 1

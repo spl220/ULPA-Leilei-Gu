@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+{% load staticfiles i18n %}
+
+{% block title %}
+    Contact ULPA
+{% endblock title %}
+
+{% block nav %}
+    {% include "includes/nav.html" with active_tab='contact' %}
+{% endblock %}
+
+{% block content %}
+	<div class="row">
+		{% if messages %}
+        	{% for message in messages %}
+            	<div class="alert {% if message.tags %}alert-{{ message.tags }}"{% endif %}>{{ message }}</div>
+        	{% endfor %}
+		{% endif %}
+		<h1 class="col-xs-12">CONTACT US</h1>
+		<h4 class="col-xs-12">Use the form below to drop us a message.</h4>
+		<div class="col-xs-12 col-md-9">
+			<div class="contact row">
+				<form name="test" method="post" class="form-horizontal language-search" action="." id="contact-form">
+					{% csrf_token %}
+					{% with WIDGET_ERROR_CLASS='has-error' WIDGET_REQUIRED_CLASS='my_required' %}
+					<div class="first_name col-xs-12">
+						<div class="form-group {%if form.first_name.errors%}has-error{%endif%}">
+							<label class="control-label" for="{{ form.first_name.id_for_label }}">{% render_field form.first_name.label %}</label>
+							{% render_field form.first_name class+='form-control' aria-describedby="first-name" %}
+							{% for error in form.first_name.errors %}
+								<div class="alert alert-danger" role="alert">
+								  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+								  <span class="sr-only">Error:</span>
+								  {{error}}
+								</div>
+							{% endfor%}							
+						</div>
+					</div>
+					<div class="last_name col-xs-12">
+						<div class="form-group {%if form.last_name.errors%}has-error{%endif%}">
+							<label class="control-label" for="{{ form.last_name.id_for_label }}">{% render_field form.last_name.label %}</label>
+							{% render_field form.last_name class+='form-control' aria-describedby="last-name" %}
+							{% for error in form.last_name.errors %}
+								<div class="alert alert-danger" role="alert">
+								  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+								  <span class="sr-only">Error:</span>
+								  {{error}}
+								</div>
+							{% endfor%}
+						</div>
+					</div>
+					<div class="contact_number col-xs-12">
+						<div class="form-group {%if form.contact_number.errors%}has-error{%endif%}">
+							<label class="control-label" for="{{ form.contact_number.id_for_label }}">{% render_field form.contact_number.label %}</label>
+							{% render_field form.contact_number class+='form-control' aria-describedby="contact-number"%}
+							{% for error in form.contact_number.errors %}
+								<div class="alert alert-danger" role="alert">
+								  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+								  <span class="sr-only">Error:</span>
+								  {{error}}
+								</div>
+							{% endfor%}							
+						</div>
+					</div>
+					<div class="email col-xs-12">
+						<div class="form-group {%if form.email.errors%}has-error{%endif%}">
+							<label class="control-label" for="{{ form.email.id_for_label }}">{% render_field form.email.label %}</label>
+							{% render_field form.email class+='form-control' aria-describedby="email"%}
+							{% for error in form.email.errors %}
+								<div class="alert alert-danger" role="alert">
+								  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+								  <span class="sr-only">Error:</span>
+								  {{error}}
+								</div>
+							{% endfor%}
+						</div>
+					</div>
+					<div class="preferred_contact_method col-xs-12">
+						<div class="form-group {%if form.preferred_contact_method.errors%}has-error{%endif%}">
+							<label class="control-label" for="{{ form.preferred_contact_method.id_for_label }}">{% render_field form.preferred_contact_method.label %}</label>
+							{% render_field form.preferred_contact_method class+='form-control' aria-describedby="preferred-contact-method"%}
+							{% for error in form.preferred_contact_method.errors %}
+								<div class="alert alert-danger" role="alert">
+								  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+								  <span class="sr-only">Error:</span>
+								  {{error}}
+								</div>
+							{% endfor%}							
+						</div>
+					</div>
+					<div class="your_message col-xs-12">
+						<div class="form-group {%if form.your_message.errors%}has-error{%endif%}">
+							<label class="control-label" for="{{ form.your_message.id_for_label }}">{% render_field form.your_message.label %}</label>
+							{% render_field form.your_message class+='form-control' aria-describedby="your_message"%}
+							{% for error in form.your_message.errors %}
+								<div class="alert alert-danger" role="alert">
+								  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+								  <span class="sr-only">Error:</span>
+								  {{error}}
+								</div>
+							{% endfor%}
+						</div>
+					</div>
+					{% endwith %}
+					<div class="submit col-xs-5">
+						<div class="form-group">
+							<input id="contact-submit" type='submit' class="btn btn-default btn-ulpa" value="Submit">
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{% static 'js/contact.js' %}"></script>
+{% endblock %}

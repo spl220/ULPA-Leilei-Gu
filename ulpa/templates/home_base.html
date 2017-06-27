@@ -1,0 +1,113 @@
+{% load staticfiles i18n %}
+<!DOCTYPE html>
+<html lang="en" ng-app>
+  <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>{% block title %}ulpa{% endblock title %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{ site_configuration.facebook_description|default:'This site shows you what languages are taught at which universities in Australia.'|striptags}}">
+    <meta name="author" content="">
+    <meta property="og:url"                content="{{ site_configuration.facebook_url|default:'http://ulpa.edu.au'|striptags}}" />
+    <meta property="og:type"               content="website" />
+    <meta property="og:title"              content="{{ site_configuration.facebook_title|default:'University Languages Portal Australia'|striptags }}" />
+    <meta property="og:description"        content="{{ site_configuration.facebook_description|default:'This site shows you what languages are taught at which universities in Australia.'|striptags}}"  />
+    <meta property="og:image"              content="{%if site_configuration.facebook_image%}{{site_configuration.facebook_image.url}}{%else%}http://ulpa.edu.au/static/images/logo.png{%endif%}"/>
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+
+    <![endif]-->
+
+    {% block css %}
+
+    <!-- Your stuff: Third-party css libraries go here -->
+    <script src="{% static 'js/tracking.js' %}"></script>
+    <script src="{% static 'js/outbound.js' %}"></script>
+
+    <!-- This file store project specific CSS -->
+    {{ static }}
+    <link href="{% static 'css/main.css' %}" rel="stylesheet">
+    {% endblock %}
+
+    {% block angular %}
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+    {% endblock %}
+
+  </head>
+
+  <body>
+
+    {% block nav %}{% endblock %}
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert {% if message.tags %}alert-{{ message.tags }}"{% endif %}>{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+
+    <div class="search-div-background">
+      <div class="search-div-background-image">
+        <div class="container">
+          {% block search_div %}
+            <p>Use this document as a way to quick start any new project.</p>
+          {% endblock search_div %}
+        </div>
+      </div>
+    </div>
+
+    <div class="learn-more-div">
+      <div class="container">
+        {% block learn_more_div %}
+          <p>Use this document as a way to quick start any new project.</p>
+        {% endblock learn_more_div %}
+      </div>
+    </div>
+
+    <div class="what-languages-div-background">
+      <div class="what-languages-div-background-image">
+        <div class="container">
+          {% block what_languages_div %}
+            <p>Use this document as a way to quick start any new project.</p>
+          {% endblock what_languages_div %}
+        </div>
+      </div>
+    </div>
+
+    {% include 'includes/sponsors.html' %}
+    {% include 'includes/footer.html' %}
+
+    {% block modal %}{% endblock modal %}
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    {% block javascript %}
+      <!-- Latest JQuery -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+      <!-- Latest compiled and minified JavaScript -->
+      <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+      <!-- Your stuff: Third-party javascript libraries go here -->
+
+      <!-- place project specific Javascript in this file -->
+      <script src="{% static 'js/project.js' %}"></script>
+      <script src="{% static 'js/selectize/selectize.min.js' %}"></script>
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', '{{GOOGLE_ANALYTICS}}', 'auto');
+        ga('require', 'linkid', 'linkid.js');
+        ga('send', 'pageview');
+      </script>
+
+      {% block extra_scripts %}{% endblock %}
+    {% endblock javascript %}
+  </body>
+</html>

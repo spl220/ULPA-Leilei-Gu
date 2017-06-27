@@ -1,0 +1,39 @@
+{% extends "nav_base.html" %}
+
+{% load staticfiles i18n %}
+
+{% block title %}
+    Subject Search Results
+{% endblock title %}
+
+{% block content %}
+
+
+<div class="search-results row">
+
+    <h1 class="col-xs-12">YOUR SEARCH RESULTS</h1>
+
+    {% if subjects %}
+        <div class="sort col-xs-12">
+            <div class="dropdown">
+            </div>
+        </div>
+    {% endif %}
+
+    {% for subject in subjects %}
+        {% include 'subjects/includes/search_results_subject.html' with subject=subject%}
+    {% empty %}
+        <div class="col-sm-12">
+            <h2>No Subjects Found</h2>
+        </div>
+    {% endfor %}
+</div>
+
+</div>
+
+{% endblock %}
+
+
+{% block extra_scripts %}
+<script src="{% static 'js/print-results.js' %}"></script>
+{% endblock %}

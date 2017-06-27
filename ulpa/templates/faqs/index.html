@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load staticfiles i18n %}
+{% load markdown_deux_tags %}
+
+{% block title %}
+    FAQ
+{% endblock title %}
+
+{% block nav %}
+    {% include "includes/nav.html" with active_tab='faq' %}
+{% endblock %}
+
+{% block scrollspy %}data-spy="scroll" data-target="#faq-nav"{% endblock %}
+
+{% block content %}
+	<div class="faq row" >
+		<div class="col-xs-12">
+			<h1>FAQ</h1>
+		</div>
+		<div id="contents" class="faq-contents nav visible-xs visible-sm table-of-contents col-xs-12">
+
+		</div>
+		<div class="col-xs-12 col-md-9">
+			{% for faq_category in all_faqs %}
+				<div id="{{faq_category.pk}}-category">
+					<h4 >{{ faq_category.name }}</h4>
+
+					{% for faq in faq_category.faqs.all %}
+
+			            <div class="panel panel-default">
+			                <div class="panel-heading" data-toggle="collapse" href="#{{faq_category.pk}}-{{ forloop.counter0 }}-collapse" role="tab" id="{{forloop.counter0}}">
+			                    <p class="panel-title">
+			                        <a role="button"  aria-expanded="true" aria-controls="{{faq.question}}">
+			                            {{faq.question}}
+			                        </a>
+			                    </p>
+			                </div>
+			                <div id="{{faq_category.pk}}-{{ forloop.counter0 }}-collapse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="answer to {{faq.question}}">
+			                    <div class="panel-body">
+			                    	<p>{{faq.answer|markdown}}</p>
+			                    </div>
+			                </div>
+			            </div>
+					{% endfor %}
+				</div>
+			{% endfor %}
+		</div>
+		<div class="col-xs-1 vertical-line"></div>
+		<div id="faq-nav" class="col-md-3">
+			<ul id="nav" class="nav hidden-xs hidden-sm" data-spy="affix">
+
+			</ul>
+		</div>
+	</div>
+
+{% endblock %}
+
+{% block extra_scripts %}
+
+    <script src="{% static 'js/faq.js' %}"></script>
+{% endblock extra_scripts %}

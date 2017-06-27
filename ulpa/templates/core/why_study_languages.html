@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load markdown_deux_tags %}
+{% load staticfiles i18n %}
+
+{% block title %}
+    Why study languages?
+{% endblock title %}
+
+{% block nav %}
+    {% include "includes/nav.html" with active_tab='none' %}
+{% endblock %}
+
+{% block scrollspy %}data-spy="scroll" data-target="#why-study-nav"{% endblock %}
+
+{% block content %}
+
+    <div class="content">
+        <div class="row why-study">
+
+            <div class="col-xs-12">
+                {{ site_configuration.why_study_languages_heading|default:"<< why_study_page_heading >>"|markdown}}
+            </div>
+            <div class="col-xs-12 visible-xs visible-sm table-of-contents nav" id="contents">
+
+            </div>
+            <div class="col-xs-12 col-md-9">
+                {{ site_configuration.why_study_languages_content|default:"<< why_study_page_content >>"|markdown}}
+            </div>
+
+            <div id="why-study-nav" class="col-md-3">
+                <ul id="nav" class="nav hidden-xs hidden-sm affix-top" data-spy="affix">
+                </ul>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block extra_scripts %}
+
+    <script src="{% static 'js/why_study.js' %}"></script>
+{% endblock extra_scripts %}
