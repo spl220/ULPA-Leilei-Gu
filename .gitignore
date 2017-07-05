@@ -51,3 +51,5 @@ node_modules/
 
 # Compass
 .sass-cache
+
+docs/_build

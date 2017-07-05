@@ -28,60 +28,60 @@ SECRET_KEY = env("DJANGO_SECRET_KEY")
 # ------------------------------------------------------------------------------
 # Hosts/domain names that are valid for this site
 # See https://docs.djangoproject.com/en/1.6/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = [
-    "www.ulpa.edu.au",
-    "ulpa.edu.au",
-    "ruvad.com",
-    "www.ruvad.com",
-    "ulpa.wspdigitalproduction.com",]
+#ALLOWED_HOSTS = [
+#    "www.ulpa.edu.au",
+#    "ulpa.edu.au",
+#    "ruvad.com",
+#    "www.ruvad.com",
+#    "ulpa.wspdigitalproduction.com",]
 # END SITE CONFIGURATION
-
+ALLOWED_HOSTS = ["*",]
 
 # STORAGE CONFIGURATION
 # ------------------------------------------------------------------------------
 # Uploaded Media Files
 # ------------------------
 # See: http://django-storages.readthedocs.org/en/latest/index.html
-INSTALLED_APPS += (
-    'storages',
-)
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+#INSTALLED_APPS += (
+#    'storages',
+#)
+#DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 
-AWS_STORAGE_BUCKET_NAME = env('DJANGO_AWS_STORAGE_BUCKET_NAME')
-AWS_AUTO_CREATE_BUCKET = False
-AWS_QUERYSTRING_AUTH = False
-AWS_S3_SECURE_URLS = False
-AWS_S3_HOST = 's3-ap-southeast-2.amazonaws.com'
-AWS_S3_CALLING_FORMAT = OrdinaryCallingFormat()
-AWS_SES_REGION_NAME = 'us-east-1'
-AWS_SES_REGION_ENDPOINT = 'email.us-east-1.amazonaws.com'
+#AWS_STORAGE_BUCKET_NAME = env('DJANGO_AWS_STORAGE_BUCKET_NAME')
+#AWS_AUTO_CREATE_BUCKET = False
+#AWS_QUERYSTRING_AUTH = False
+#AWS_S3_SECURE_URLS = False
+#AWS_S3_HOST = 's3-ap-southeast-2.amazonaws.com'
+#AWS_S3_CALLING_FORMAT = OrdinaryCallingFormat()
+#AWS_SES_REGION_NAME = 'us-east-1'
+#AWS_SES_REGION_ENDPOINT = 'email.us-east-1.amazonaws.com'
 
 # Bypasses S3's URL parameter authentication stuff
-AWS_S3_CUSTOM_DOMAIN = 'media-ulpa-wspdigitalproduction-com.s3.amazonaws.com'
+#AWS_S3_CUSTOM_DOMAIN = 'media-ulpa-wspdigitalproduction-com.s3.amazonaws.com'
 
 # AWS cache settings, don't change unless you know what you're doing:
-AWS_EXPIRY = 60 * 60 * 24 * 7
+#AWS_EXPIRY = 60 * 60 * 24 * 7
 
 # TODO See: https://github.com/jschneier/django-storages/issues/47
 # Revert the following and use str after the above-mentioned bug is fixed in
 # either django-storage-redux or boto
-AWS_HEADERS = {
-    'Cache-Control': six.b('max-age=%d, s-maxage=%d, must-revalidate' % (
-        AWS_EXPIRY, AWS_EXPIRY))
-}
+#AWS_HEADERS = {
+#    'Cache-Control': six.b('max-age=%d, s-maxage=%d, must-revalidate' % (
+#        AWS_EXPIRY, AWS_EXPIRY))
+#}
 
 # URL that handles the media served from MEDIA_ROOT, used for managing stored files.
-MEDIA_URL = 'https://s3.amazonaws.com/%s/' % AWS_STORAGE_BUCKET_NAME
+#MEDIA_URL = 'https://s3.amazonaws.com/%s/' % AWS_STORAGE_BUCKET_NAME
 
 
 # EMAIL
 # ------------------------------------------------------------------------------
 EMAIL_BACKEND = 'robust_email.backends.DatabaseBackend'
 BASE_EMAIL_BACKEND = 'django_ses.SESBackend'
-SERVER_EMAIL = 'noreply@wspdigital.com'
-DEFAULT_FROM_EMAIL = 'noreply@wspdigital.com'
-AWS_SES_ACCESS_KEY_ID = env('DJANGO_AWS_SES_ACCESS_KEY_ID')
-AWS_SES_SECRET_ACCESS_KEY = env('DJANGO_AWS_SES_SECRET_ACCESS_KEY')
+SERVER_EMAIL = 'noreply@unimelb.edu.au'
+DEFAULT_FROM_EMAIL = 'noreply@unimelb.edu.au'
+#AWS_SES_ACCESS_KEY_ID = env('DJANGO_AWS_SES_ACCESS_KEY_ID')
+#AWS_SES_SECRET_ACCESS_KEY = env('DJANGO_AWS_SES_SECRET_ACCESS_KEY')
 EMAIL_RECIPIENTS = ['anya@unimelb.edu.au']
 
 # TEMPLATE CONFIGURATION
@@ -127,11 +127,11 @@ CACHES = {
 # Error logging
 # ------------------------------------------------------------------------------
 
-RAVEN_CONFIG = {
-    'dsn': 'https://23ea8bd7cca441e8b2f58516b9bd64d7:5a6f6eab41cc48239ba01dc67348c4ee@app.getsentry.com/47533',
-}
+#RAVEN_CONFIG = {
+#    'dsn': 'https://23ea8bd7cca441e8b2f58516b9bd64d7:5a6f6eab41cc48239ba01dc67348c4ee@app.getsentry.com/47533',
+#}
 
 
-INSTALLED_APPS = INSTALLED_APPS + (
-    'raven.contrib.django.raven_compat',
-)
+#INSTALLED_APPS = INSTALLED_APPS + (
+#    'raven.contrib.django.raven_compat',
+#)
