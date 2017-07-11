@@ -7,8 +7,8 @@ Production Server Configuration
 from __future__ import absolute_import, unicode_literals
 
 
-from boto.s3.connection import OrdinaryCallingFormat
-from django.utils import six
+#from boto.s3.connection import OrdinaryCallingFormat
+#from django.utils import six
 
 from .common import *  # noqa
 
@@ -28,14 +28,13 @@ SECRET_KEY = env("DJANGO_SECRET_KEY")
 # ------------------------------------------------------------------------------
 # Hosts/domain names that are valid for this site
 # See https://docs.djangoproject.com/en/1.6/ref/settings/#allowed-hosts
-#ALLOWED_HOSTS = [
-#    "www.ulpa.edu.au",
-#    "ulpa.edu.au",
-#    "ruvad.com",
-#    "www.ruvad.com",
-#    "ulpa.wspdigitalproduction.com",]
+ALLOWED_HOSTS = [
+    "www.ulpa.edu.au",
+    "ulpa.edu.au",
+    "ulpa.eresearch.unimelb.edu.au",
+    "ulpa-dev.eresearch.unimelb.edu.au",]
 # END SITE CONFIGURATION
-ALLOWED_HOSTS = ["*",]
+#ALLOWED_HOSTS = ["*",]
 
 # STORAGE CONFIGURATION
 # ------------------------------------------------------------------------------
@@ -77,12 +76,20 @@ ALLOWED_HOSTS = ["*",]
 # EMAIL
 # ------------------------------------------------------------------------------
 EMAIL_BACKEND = 'robust_email.backends.DatabaseBackend'
-BASE_EMAIL_BACKEND = 'django_ses.SESBackend'
-SERVER_EMAIL = 'noreply@unimelb.edu.au'
-DEFAULT_FROM_EMAIL = 'noreply@unimelb.edu.au'
+#BASE_EMAIL_BACKEND = 'django_ses.SESBackend'
+SERVER_EMAIL = 'noreply@ulpa.edu.au'
+DEFAULT_FROM_EMAIL = 'noreply@ulpa.edu.au'
 #AWS_SES_ACCESS_KEY_ID = env('DJANGO_AWS_SES_ACCESS_KEY_ID')
 #AWS_SES_SECRET_ACCESS_KEY = env('DJANGO_AWS_SES_SECRET_ACCESS_KEY')
 EMAIL_RECIPIENTS = ['anya@unimelb.edu.au']
+
+BASE_EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+#BASE_EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+#EMAIL_HOST = 'localhost'
+#EMAIL_PORT = 25
+#EMAIL_HOST_USER = ''
+#EMAIL_HOST_PASSWORD = ''
+#EMAIL_USE_TLS = False
 
 # TEMPLATE CONFIGURATION
 # ------------------------------------------------------------------------------

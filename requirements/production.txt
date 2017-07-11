@@ -3,12 +3,12 @@
 -r base.txt
 
 
-boto==2.38.0
-django-storages-redux==1.2.3
-django-ses==0.7.0
-newrelic==2.52.0.40
-raven==5.3.1
-whitenoise==1.0.6
+#boto==2.38.0
+#django-storages-redux==1.2.3
+#django-ses==0.7.0
+#newrelic==2.52.0.40
+#raven==5.3.1
+#whitenoise==1.0.6
 
 # WSGI Handler
 # ------------------------------------------------
