@@ -30,7 +30,7 @@ def send_html_email(recipient, subject_template, content_template, context, atta
         return
 
     # Grab the default email address from settings
-    from_email = getattr(settings, 'DEFAULT_FROM_EMAIL', 'noreply@wspdigital.com')
+    from_email = getattr(settings, 'DEFAULT_FROM_EMAIL', 'noreply@ulpa.edu.au')
 
     # Grab the base url for fully qualified links
     current_site = Site.objects.get_current()
