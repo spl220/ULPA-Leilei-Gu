@@ -16,15 +16,21 @@ services:
     depends_on:
       - postgres
     command: /gunicorn.sh
-    ports:
-      - "0.0.0.0:80:80"
-      - "0.0.0.0:443:443"
     volumes:
-      - django_media:/app/ulpa/media
+      - /ulpa/media:/app/ulpa/media
+      - /ulpa/static:/app/staticfiles/
     env_file: env
+    restart: always
+
+  # Yao Pan <yao.pan@unimelb.edu.au> provided this Postfix image or you could build one yourself
+  postfix:
+    image: "docker.eresearch.unimelb.edu.au/infrastructure/postfix:alpine"
+    environment:
+      - HOSTNAME=ulpa-dev.eresearch.unimelb.edu.au
+      - DOMAIN=ulpa-dev.eresearch.unimelb.edu.au
+      - RELAYNETS=172.18.0.0/24
     restart: always
 
 volumes:
   postgres_data: {}
   postgres_backup: {}
-  django_media: {}
