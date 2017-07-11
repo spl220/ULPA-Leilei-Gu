@@ -83,13 +83,13 @@ DEFAULT_FROM_EMAIL = 'noreply@ulpa.edu.au'
 #AWS_SES_SECRET_ACCESS_KEY = env('DJANGO_AWS_SES_SECRET_ACCESS_KEY')
 EMAIL_RECIPIENTS = ['anya@unimelb.edu.au']
 
-BASE_EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-#BASE_EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-#EMAIL_HOST = 'localhost'
-#EMAIL_PORT = 25
-#EMAIL_HOST_USER = ''
-#EMAIL_HOST_PASSWORD = ''
-#EMAIL_USE_TLS = False
+#BASE_EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+BASE_EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = '172.18.0.3'
+EMAIL_PORT = 25
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+EMAIL_USE_TLS = False
 
 # TEMPLATE CONFIGURATION
 # ------------------------------------------------------------------------------
