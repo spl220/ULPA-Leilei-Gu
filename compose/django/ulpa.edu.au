@@ -1,0 +1,53 @@
+
+upstream app {
+    server django:5000;
+}
+
+server {
+    charset utf-8;
+
+    listen 80;
+
+#    server_name ulpa.edu.au www.ulpa.edu.au
+
+    root /var/www/html;
+
+    # allow .well-known through http 80 for Certbot ACME challenge
+    location ~* (?:^|/)\.well-known {
+        allow all;
+    }
+
+#    location ^~ /.well-known/acme-challenge/ {
+#        allow all;
+#    }
+
+    location ~* (?:^|/)\. {
+        deny all;
+    }
+
+    location /static/ {
+        autoindex off;
+        alias /app/staticfiles/;
+    }
+
+    location ~ /media/(university_bulk_uploads|subject_bulk_uploads|languages_bulk_uploads) {
+        deny all;
+        return 403;
+    }
+
+    location /media/ {
+        autoindex off;
+        alias /app/ulpa/media/;
+    }
+
+    location / {
+        try_files $uri @proxy_to_app;
+    }
+
+    location @proxy_to_app {
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $http_host;
+        proxy_redirect off;
+        proxy_pass http://app;
+    }
+}
