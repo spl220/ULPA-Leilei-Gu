@@ -15,9 +15,9 @@ class DatabaseBackend(settings.BASE_EMAIL_BACKEND):
 
     def send_messages(self, email_messages):
         for email_message in email_messages:
-            self._send(email_message)
-                
-    def _send(self, email_message):
+            self._send_now(email_message)
+
+    def _send_now(self, email_message):
         """ Send the email and save to database. """
         if not email_message.recipients():
             return False
