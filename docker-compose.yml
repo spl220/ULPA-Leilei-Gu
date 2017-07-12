@@ -32,8 +32,8 @@ services:
   postfix:
     image: "docker.eresearch.unimelb.edu.au/infrastructure/postfix:alpine"
     environment:
-      - HOSTNAME=ulpa-dev.eresearch.unimelb.edu.au
-      - DOMAIN=ulpa-dev.eresearch.unimelb.edu.au
+      - HOSTNAME=ulpa.edu.au
+      - DOMAIN=ulpa.edu.au
       - RELAYNETS=172.18.0.0/16
     networks:
       static-network:
