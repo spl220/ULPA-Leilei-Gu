@@ -1,0 +1,93 @@
+<div class="col-md-4 col-sm-6 col-xs-12 subject">
+	<div class="subject-box row">
+		<div class="subject-university col-xs-12">
+			<div class="row">
+				{% if subject.university.logo %}
+					<div class="col-xs-9 university-logo">
+						<span class="helper"></span><img src="{{subject.university.logo.url}}"/>
+					</div>
+				{% else %}
+					<div class="col-xs-9 university-text">
+						<span class="helper"></span><p>{{subject.university}}</p>
+					</div>
+				{% endif %}
+				<div class="col-xs-3 state">{{subject.state|upper}}</div>
+			</div>
+		</div>
+		<div class="subject-heading  col-xs-12">
+				<a class="title" data-toggle="tooltip" data-placement="top" data-original-title="{{subject.title|upper}}">{{subject.title|upper|truncatechars:42}}</a>
+				<p class="language">Language: <a data-toggle="tooltip" data-placement="top" data-original-title="{{subject.language}}" href="{% url 'languages:individual-language' subject.language.slug %}">{{subject.language|truncatechars:33}}</a></p>
+			</div>
+			<table class="subject-table table col-sm-12">
+				<tr>
+					<th class="col-xs-9">Subject code</th>
+					<td class="col-xs-3">{{subject.code}}</td>
+				</tr>
+				<tr>
+					<th class="col-xs-9">Next Offered</th>
+					<td class="col-xs-3">{{subject.next_offered|default:'N/A'}}</td>
+				</tr>
+				<tr>
+					<th class="col-xs-9">Regular / intensive / both available</th>
+
+					<td class="col-xs-3">{% if subject.intensity|length > 1 %}
+								Both
+						{% else %}
+							{% for intensity in subject.intensity %}	
+								{{intensity|title}}
+							{% endfor %}
+						{% endif %}
+					</td>
+				</tr>
+				<tr>
+					<th class="col-xs-9">Fully online / on-campus / both available</th>
+					<td class="col-xs-3" style="white-space: nowrap">{% if subject.study_choice|length > 1 %}
+								Both
+						{% else %}
+							{% for study_choice in subject.study_choice %}
+								{{study_choice|title}}
+							{% endfor %}
+						{% endif %}
+					</td>
+				</tr>
+				<tr>
+					<th class="col-xs-9">Pre-requisite language</th>
+					<td class="col-xs-3">
+						{% if subject.prerequisite|lower != "none" %}
+							Yes
+						{% else %}
+							None
+						{% endif %}
+					</td>
+				</tr>
+				<tr>
+					<th class="col-xs-9">Subject is taught via another university</th>
+					<td class="col-xs-3">
+						{% if subject.other_university|lower != "no" %}
+							Yes
+						{% else %}
+							No
+						{% endif %}
+					</td>
+				</tr>
+				<tr>
+					<th class="col-xs-9">Also available at more advanced levels</th>
+					<td class="col-xs-3">
+						{% if subject.non_beginner_level_available %}
+							Yes
+						{% else %}
+							No
+						{% endif %}
+					</td>
+				</tr>
+			</table>
+
+	</div>
+	<div class="">
+		{% if subject.url %}
+			<div class="col-sm-12 subject-more">
+				<a href="{{subject.url}}" target="_blank" class="btn btn-ulpa" onclick="trackOutboundLink({{subject.url}}); return false;">MORE INFORMATION</a>
+			</div>
+		{% endif %}
+	</div>
+</div>

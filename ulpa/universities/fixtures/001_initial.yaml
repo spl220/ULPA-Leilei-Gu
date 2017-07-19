@@ -1,0 +1,20 @@
+- fields: {created: !!timestamp '2015-05-27 05:42:56.789598+00:00', cross_institutional_url: 'http://www.monash.edu.au',
+    logo: ./monash.jpeg, modified: !!timestamp '2015-05-27 05:42:56.789630+00:00',
+    name: Monash, state: Victoria, url: ''}
+  model: universities.university
+  pk: 1
+- fields: {created: !!timestamp '2015-06-03 01:59:10.486233+00:00', cross_institutional_url: 'http://www.monash.edu',
+    logo: '', modified: !!timestamp '2015-06-03 01:59:10.598907+00:00', name: Monash,
+    state: Victoria, url: ''}
+  model: universities.university
+  pk: 2
+- fields: {created: !!timestamp '2015-06-03 01:59:10.604377+00:00', cross_institutional_url: 'http://www.unimelb.edu.au',
+    logo: '', modified: !!timestamp '2015-06-03 01:59:10.605322+00:00', name: Melbourne,
+    state: Victoria, url: ''}
+  model: universities.university
+  pk: 3
+- fields: {created: !!timestamp '2015-06-03 01:59:10.606634+00:00', cross_institutional_url: 'http://www.deakin.edu.au',
+    logo: '', modified: !!timestamp '2015-06-03 01:59:10.607424+00:00', name: Deakin,
+    state: Victoria, url: ''}
+  model: universities.university
+  pk: 4

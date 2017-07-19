@@ -1,0 +1,54 @@
+- fields:
+    abs_classification: ''
+    abs_data_no_of_speakers: null
+    abs_data_perc_of_pop: null
+    alternative_name: British
+    category: [1]
+    created: 2015-06-03 02:32:35.579464+00:00
+    description: This is english
+    how_widely_taught: Everywhere
+    modified: 2015-06-03 02:32:35.579488+00:00
+    name: English
+  model: languages.language
+  pk: 1
+- fields:
+    abs_classification: ''
+    abs_data_no_of_speakers: null
+    abs_data_perc_of_pop: null
+    alternative_name: Francais
+    category: [1, 2]
+    created: 2015-06-03 02:33:06.809279+00:00
+    description: This is french
+    how_widely_taught: Everywhere
+    modified: 2015-06-03 02:33:06.809304+00:00
+    name: French
+  model: languages.language
+  pk: 2
+- fields:
+    abs_classification: ''
+    abs_data_no_of_speakers: null
+    abs_data_perc_of_pop: null
+    alternative_name: Espanol
+    category: [1, 2, 3]
+    created: 2015-06-03 02:33:45.730622+00:00
+    description: This is spanish
+    how_widely_taught: Everywhere
+    modified: 2015-06-03 02:33:45.730645+00:00
+    name: Spanish
+  model: languages.language
+  pk: 3
+- fields: {created: !!timestamp '2015-06-03 02:32:27.523974+00:00', description: This
+      is a european language, modified: !!timestamp '2015-06-03 02:32:27.524006+00:00',
+    name: European}
+  model: languages.languagecategory
+  pk: 1
+- fields: {created: !!timestamp '2015-06-03 02:33:00.004133+00:00', description: This
+      is a romance language, modified: !!timestamp '2015-06-03 02:33:00.004158+00:00',
+    name: Romance}
+  model: languages.languagecategory
+  pk: 2
+- fields: {created: !!timestamp '2015-06-03 02:33:40.920479+00:00', description: This
+      is a mediterranean language, modified: !!timestamp '2015-06-03 02:33:40.920505+00:00',
+    name: 'Mediterranean '}
+  model: languages.languagecategory
+  pk: 3

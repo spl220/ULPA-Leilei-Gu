@@ -1,0 +1,57 @@
+{% extends "nav_base.html" %}
+{% load markdown_deux_tags %}
+
+{% block title %}
+    Can I study at a university other than my own?
+{% endblock title %}
+
+{% block content %}
+
+
+<div class="content">
+    <div class="other-uni row">    
+        
+        <div class="col-xs-12 col-md-7">
+        {{ site_configuration.other_university_heading|default:"<< other_university_page_heading >>"|markdown}}
+        </div>
+
+        <div class="col-xs-12">
+            <div class="row">
+                <div class="col-xs-12 col-md-8">
+                    {{ site_configuration.other_university_content|default:"<< other_university_page_content >>"|markdown}}
+                </div>
+                
+                <div class="col-xs-12 col-md-4">
+                    <ul id="nav" class="nav hidden-xs hidden-sm">
+                        <li>
+                            <h5>Cross-Institutional Enrolment Policies</h5>
+                        </li>
+                        {% for university in universities %}
+                            <li class="">
+                                <a href="{{university.cross_institutional_url}}" target="_blank" onclick="trackOutboundLink({{university.cross_institutional_url}}); return false;">
+                                    {{ university.name }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 visible-xs visible-sm">
+            <ul id="nav" class="nav">
+                <li>
+                    <h5>Cross-Institutional Enrolment Policies</h5>
+                </li>
+                {% for university in universities %}
+                    <li class="">
+                        <a href="{{university.cross_institutional_url}}" target="_blank" onclick="trackOutboundLink({{university.cross_institutional_url}}); return false;">
+                            {{ university.name }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

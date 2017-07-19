@@ -1,0 +1,11 @@
+
+{% extends "admin/change_form.html" %}
+
+{% block object-tools %}
+{% if change %}{% if not is_popup %}
+  <ul class="object-tools"><li><a href="history/" class="historylink">History</a></li>
+  {% if has_absolute_url %}<li><a href="../../../r/{{ content_type_id }}/{{ object_id }}/" class="viewsitelink">View on site</a></li>{% endif %}
+  <li><a href="{% url 'admin:robust_email_emailmessage_resend' original.id %}" onclick="return window.confirm('Are you sure?');">Resend</a></li>
+  </ul>
+{% endif %}{% endif %}
+{% endblock %}

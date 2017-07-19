@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load markdown_deux_tags %}
+{% load staticfiles i18n %}
+
+{% block title %}
+    Where can I study indigenous languages?
+{% endblock title %}
+
+
+{% block nav %}
+    {% include "includes/nav.html" with active_tab='none' %}
+{% endblock %}
+
+{% block scrollspy %}data-spy="scroll" data-target="#indigenous-languages"{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <div class="indigenous-languages row">
+            <div class="col-xs-12">
+                {{ site_configuration.where_can_study_indigenous_languages_heading|default:"<< indigenous_page_heading >>"|markdown}}
+            </div>
+            <div class="col-xs-12 visible-xs visible-sm table-of-contents nav" id="contents">
+            </div>
+            <div class="col-xs-12 col-md-9">
+                {{ site_configuration.where_can_study_indigenous_languages_content|default:"<< indigenous_page_content >>"|markdown}}
+            </div>
+            <div id="why-study-nav" class="col-md-3">
+                <ul id="nav" class="nav hidden-xs hidden-sm affix-top" data-spy="affix">
+                </ul>
+            </div>
+            <div class="search-by-buttons col-xs-12 col-md-6 col-lg-4">
+                <a class="btn btn-search-by" href="{% url 'subjects:subject-search-results' %}?{% for indigenous_language in indigenous_languages %}language={{indigenous_language.name}}&{% endfor %}">Show me what I can study</a>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block extra_scripts %}
+    <script src="{% static 'js/indigenous-languages.js' %}"></script>
+{% endblock extra_scripts %}

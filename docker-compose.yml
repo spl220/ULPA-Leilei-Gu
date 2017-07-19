@@ -1,0 +1,52 @@
+version: '2'
+
+services:
+  postgres:
+    build: ./compose/postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - postgres_backup:/backups
+    networks:
+      static-network:
+        ipv4_address: 172.18.0.2
+    env_file: env
+    restart: always
+
+  django:
+    build:
+      context: .
+      dockerfile: ./compose/django/Dockerfile
+    depends_on:
+      - postgres
+    command: /gunicorn.sh
+    volumes:
+      - /ulpa/media:/app/ulpa/media
+      - /ulpa/static:/app/staticfiles/
+    networks:
+      static-network:
+        ipv4_address: 172.18.0.4
+    env_file: env
+    restart: always
+
+  # Yao Pan <yao.pan@unimelb.edu.au> provided this Postfix image or you could build one yourself
+  postfix:
+    image: "docker.eresearch.unimelb.edu.au/infrastructure/postfix:alpine"
+    environment:
+      - HOSTNAME=ulpa.edu.au
+      - DOMAIN=ulpa.edu.au
+      - RELAYNETS=172.18.0.0/16
+    networks:
+      static-network:
+        ipv4_address: 172.18.0.3
+    restart: always
+
+volumes:
+  postgres_data: {}
+  postgres_backup: {}
+
+networks:
+  static-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.18.0.0/16

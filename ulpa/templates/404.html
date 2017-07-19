@@ -1,0 +1,10 @@
+{% extends "nav_base.html" %}
+{% load markdown_deux_tags %}
+
+{% block title %}Page Not found{% endblock %}
+
+{% block content %}
+{{ site_configuration.page_not_found_content|default:"Page not found"|markdown}}
+
+
+{% endblock content %}

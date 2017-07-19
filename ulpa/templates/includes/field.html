@@ -1,0 +1,25 @@
+<div class="field-horizontal control-group {% if container_class %}{{ container_class }}{% endif %} {% if field.errors %}error{% endif %}">
+    <label class="control-label {% if field.field.required or force_required %}required{% endif %}" for="{{ field.auto_id }}">
+        {% if label %}{{ label|safe }}{% else %}{{ field.label|safe }}{% endif %}
+        {% if field_notes %}<span>{{ field_notes }}</span>{% endif %}
+    </label>
+    <div class="controls">
+
+        <div class="{% if type == 'search' %}input-append{% endif %} {% if suffix %}input-suffixed{% endif %}">
+            {% if type == 'search' %}
+
+                {{ field }}<span class="add-on search-activator" onclick="window.open('{% url search_view %}?returnid={{ field.auto_id }}', '_blank', 'status=0,toolbar=0,location=0,menubar=0,directories=0,scrollbars=1,height=600,width=985');">
+                    <i class="icon-search"></i>
+                </span>
+            {% else %}
+
+                {% if class %}
+                    {{ field|add_class:class }}{% if suffix %}<span class="add-on field-suffix">{{ suffix|safe }}</span>{% endif %}
+                {% else %}
+                    {{ field }}{% if suffix %}<span class="field-suffix">{{ suffix|safe }}</span>{% endif %}
+                {% endif %}
+
+            {% endif %}
+
+    </div>
+</div>

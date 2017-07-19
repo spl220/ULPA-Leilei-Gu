@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load markdown_deux_tags %}
+{% load staticfiles i18n %}
+
+{% block title %}
+    About ULPA
+{% endblock title %}
+
+{% block nav %}
+    {% include "includes/nav.html" with active_tab='about' %}
+{% endblock %}
+
+{% block scrollspy %}data-spy="scroll" data-target="#about-nav"{% endblock %}
+
+{% block content %}
+
+    <div class="content">
+        <div class="row about">
+
+            <div class="col-xs-12">
+                {{ site_configuration.about_page_heading|default:"<< about_page_heading >>"|markdown}}
+            </div>
+            <div class="col-xs-12 visible-xs visible-sm table-of-contents nav" id="contents">
+
+            </div>
+            <div class="col-xs-12 col-md-9">
+                {{ site_configuration.about_page_content|default:"<< about_page_content >>"|markdown}}
+            </div>
+
+            <div id="about-nav" class="col-md-3">
+                <ul id="nav" class="nav hidden-xs hidden-sm affix-top" data-spy="affix">
+			    </ul>
+		    </div>
+        </div>
+
+    </div>
+
+{% endblock %}
+
+{% block extra_scripts %}
+
+    <script src="{% static 'js/about.js' %}"></script>
+{% endblock extra_scripts %}

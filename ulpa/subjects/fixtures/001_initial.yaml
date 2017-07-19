@@ -1,0 +1,51 @@
+- fields:
+    available_online: false
+    code: ENG001
+    created: 2015-06-03 05:56:11.458432+00:00
+    intensity: Both
+    language: 1
+    modified: 2015-06-03 05:56:11.458457+00:00
+    next_offered: null
+    non_beginner_level_available: false
+    notes: ''
+    other_university: 2
+    prerequisite: [1]
+    title: Learn English
+    university: 1
+    url: ''
+  model: subjects.subject
+  pk: 1
+- fields:
+    available_online: false
+    code: FRE001
+    created: 2015-06-03 05:58:15.490956+00:00
+    intensity: Intense
+    language: 2
+    modified: 2015-06-03 05:58:15.490984+00:00
+    next_offered: null
+    non_beginner_level_available: false
+    notes: ''
+    other_university: null
+    prerequisite: []
+    title: Learn French
+    university: 2
+    url: ''
+  model: subjects.subject
+  pk: 3
+- fields:
+    available_online: false
+    code: SPA001
+    created: 2015-06-03 05:58:32.468189+00:00
+    intensity: Intense
+    language: 3
+    modified: 2015-06-03 05:58:32.468215+00:00
+    next_offered: null
+    non_beginner_level_available: false
+    notes: ''
+    other_university: null
+    prerequisite: []
+    title: Learn Spanish
+    university: 3
+    url: ''
+  model: subjects.subject
+  pk: 4

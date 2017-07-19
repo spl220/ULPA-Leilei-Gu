@@ -1,0 +1,83 @@
+{% extends "nav_base.html" %}
+{% load markdown_deux_tags %}
+
+{% block title %}
+    What languages can I study?
+{% endblock title %}
+
+{% block content %}
+
+<div class="row what-languages">
+
+    <h1 class="col-xs-12">WHAT LANGUAGES CAN I STUDY?</h1>
+    <div class="col-xs-12 col-sm-8">
+        <div class="col-xs-12">
+            {{ site_configuration.what_languages_can_study_content|default:"<< what_languages_can_study_content >>"|markdown}}
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+        <ul id="nav" class="nav hidden-xs">
+            <li>
+                <h5>Languages currently on offer</h5>
+            </li>
+            {% for language_category in language_categories %}
+                <li class="">
+                    <a href="{% url 'languages:category-language' language_category.slug %}">
+                        {{ language_category.name }}
+                    </a>
+                    <ul class="nav">
+                        {% for language in language_category.languages.all %}
+                            <li class="sub-menu ">
+                                <a href="{% url 'languages:individual-language' language.slug %}">
+                                    {{ language }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="col-xs-12">
+        <ul id="nav" class="nav visible-xs visible-sm">
+            <li>
+                <h5>Languages currently on offer</h5>
+            </li>
+            {% for language_category in language_categories %}
+                <li class="">
+                    <a href="{% url 'languages:category-language' language_category.slug %}">
+                        {{ language_category.name }}
+                    </a>
+                    <ul class="nav">
+                        {% for language in language_category.languages.all %}
+                            <li class="sub-menu ">
+                                <a href="{% url 'languages:individual-language' language.slug %}">
+                                    {{ language }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+            <div class="search-by-buttons hidden-xs hidden-sm col-sm-12">
+            <div class="col-xs-6">
+                <a class="btn btn-search-by" href="{% url 'languages:language-search' %}">SEARCH BY LANGUAGE</a>
+            </div>
+            <div class="col-xs-6">
+                <a class="btn btn-search-by" href="{% url 'universities:university-search' %}">SEARCH BY UNIVERSITY</a>
+            </div>
+        </div>
+        <div class="search-by-buttons visible-xs-block visible-sm-block row">
+            <li class="list-unstyled col-xs-12">
+                <a class="btn btn-search-by" href="{% url 'languages:language-search' %}">SEARCH BY LANGUAGE <div class="search-arrow "></div></a>
+            </li>
+            <li class="list-unstyled col-xs-12">
+                <a class="btn btn-search-by" href="{% url 'universities:university-search' %}">SEARCH BY UNIVERSITY <div class="search-arrow "></div></a>
+            </li>
+        </div>
+</div>
+    
+{% endblock %}

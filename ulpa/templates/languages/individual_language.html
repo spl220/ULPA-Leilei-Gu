@@ -1,0 +1,43 @@
+{% extends "nav_base.html" %}
+{% load markdown_deux_tags %}
+
+{% block title %}
+    {{individual_language.name|title}}
+{% endblock title %}
+
+{% block content %}
+
+<div class="row individual-language">
+	<div class="col-xs-12 col-md-9">
+		<h1>{{ individual_language.name }}</h1>
+		{{ individual_language.description|markdown }}
+	    <div class="row">
+            <div class="search-by-buttons col-xs-12 col-md-6 col-md-offset-3">
+                <a class="btn btn-search-by" href="{% url 'subjects:subject-search-results' %}?language={{individual_language.name}}">Show me what I can study</a>
+            </div>
+        </div>
+    </div>
+	<div class="col-md-3">
+        <ul id="nav" class="nav hidden-xs hidden-sm">
+            <h4>This language is taught at the following universities:</h4>
+            {% for university in universities_with_language %}
+                <li class="">
+                    {{ university.name }}
+                </li>
+            {% endfor %}
+        </ul>
+	</div>
+    <div class="col-xs-12">
+        <ul id="nav" class="nav visible-xs visible-sm">
+            <h4>This language is taught at the following universities:</h4>
+            {% for university in universities_with_language %}
+                <li class="">
+                    {{ university.name }}
+                </li>
+            {% endfor %}
+        </ul>
+	</div>
+</div>
+
+
+{% endblock %}

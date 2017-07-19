@@ -1,0 +1,759 @@
+$break-x-large: 1300px;
+
+html {
+	position: relative;
+	min-height: 100%;
+}
+
+body {
+	margin-bottom: 170px;
+
+	@media (max-width: $screen-sm) {
+		margin-bottom: 220px;
+	}
+
+	.alert.alert-success{
+		margin: 0;
+		text-align: center;
+	}
+
+	& > .container {
+		padding: 70px 15px 30px;
+	}
+
+
+	// Home page
+	& .search-div-background {
+		background-color: $primary-blue;
+
+		& .search-div-background-image {
+			background: url('../images/search-div-background-faded.png') no-repeat center 0;
+			min-height: 340px;
+
+			& .home-page-heading {
+				padding: 70px 0;
+
+				@media (max-width: $screen-sm) {
+					padding: 10px 0;
+				}
+			}
+			@media (max-width: $screen-sm) {
+				background: none;
+			}
+		}
+
+		& .search-by-buttons {
+			& .btn-search-by {
+				position: relative;
+
+				&:hover {
+					& .search-arrow {
+						background-image: url('../images/hover-search-by-arrow.png')
+					}
+				}
+				@media (max-width: $screen-sm) {
+					text-align: center;
+					text-indent: 0;
+				}
+			}
+
+			& .search-arrow {
+			    background-image: url('../images/search-by-arrow.png');
+			    height: 57px;
+			    width: 56px;
+			    position: absolute;
+			    top: 8px;
+			    right: 12px;
+			}
+			@media (max-width: $screen-sm) {
+				margin-top: 0;
+			}
+		}
+	}
+	& .learn-more-div {
+		background-color: $default-background;
+		min-height: 310px;
+
+		& .container {
+			padding: 20px;
+		}
+
+		& .col-sm-3 {
+		    margin-top: 15px;
+
+		    & .btn-ulpa {
+		    	font-size: 11px;
+		    }
+		}
+
+		& .col-sm-3:not(:last-child) {
+			border-right: 1px solid #dbdbdb;	
+
+			@media (max-width: $screen-sm) {
+				border-right: none;
+			}
+		}
+		
+		& .learn-more-text {
+			min-height: 80px;
+		    padding: 15px 50px 0 50px;
+
+		}
+
+		& .other-university-logo {
+			background: url('../images/can-i.png') no-repeat center 0;
+			height: 104px;
+		}
+		& .indigenous-logo {
+			background: url('../images/where.png') no-repeat center 0;
+			height: 104px;
+		}
+		& .why-study-logo {
+			background: url('../images/why.png') no-repeat center 0;
+			height: 104px;
+		}
+		& .faq-logo {
+			background: url('../images/FAQ.png') no-repeat center 0;
+			height: 104px;
+		}	
+	}
+	& .what-languages-div-background {
+		background-color: $primary-orange;
+
+		& .what-languages-div-background-image {
+			width: 100%;
+			min-height: 340px;
+			background: url('../images/what-languages-banner.png')  no-repeat center 0;
+			@media (max-width: $screen-sm) {
+				background: none;
+				min-height: 0;
+			}
+
+			& h1 {
+				color: $default-text;
+				text-transform: uppercase;
+			}
+
+			& .row {
+				padding: 40px;
+			}
+		}
+		& .btn-search-by {
+			text-align: center;
+			text-indent: 0;
+		}
+
+		list-style: none;
+		@media (max-width: $screen-sm) {
+			min-height: 0;
+			padding-bottom: 35px;
+		}
+	}
+	& .sponsors {
+		& .other-sponsors {
+			& div a {
+				min-height: 40px;
+				display: block;
+				margin-bottom: 10px;
+			}
+			& .lcnau-logo a {
+				background: url('../images/lcnau.png') no-repeat center 0;
+				background-size: contain;
+			}
+			& .dynamics-of-language-logo a {
+				background: url('../images/dynamics-of-language.png') no-repeat center 0;
+				background-size: contain;
+			}
+			& .anu-logo a {
+				background: url('../images/anu.png') no-repeat center 0;
+				background-size: contain;
+			}
+			& .macquarie-logo a {
+				background: url('../images/macquarie.png') no-repeat center 0;
+				background-size: contain;
+			}
+			& .melbourne-university-logo a {
+				background: url('../images/melbourne-university.png') no-repeat center 0;
+				background-size: contain;
+			}
+		}
+		// Home Page - Sponsor Section
+		& .main-sponsors {
+			padding-bottom: 25px;
+		    & .australian-government {
+		        display: block;
+		        height: 100px;
+		        width: 100%;
+		        background: url("../images/australian_government_logo.png") no-repeat center 0;
+		        background-size: contain;
+		    }
+
+		    & .office-of-learning {
+		        display: block;
+		        height: 100px;
+		        width: 100%;
+		        background: url("../images/office_for_learning_and_teaching_logo.png") no-repeat center 0;
+		        background-size: contain;
+		    }
+		}
+	}
+
+	& .legal {
+		color: $default-text;
+		padding: 20px 0;
+
+		@media (max-width: $screen-sm) {
+			padding: 10px 20px;
+		}
+		
+		& .legal-links a {
+			color: $default-text;
+			border-right: 1px solid #dbdbdb;
+			padding-right: 5px;
+			padding-left: 1px;
+			font-size: 13px;
+		}
+	}
+
+	& .social-media {
+		padding-top: 10px;
+		.row {
+			padding: 20px;
+			& a {
+				display: block;
+				text-indent: -99999px;
+				min-height: 28px;
+			}
+		}
+		& .facebook a {
+			background: url("../images/facebook.png") no-repeat center 0;
+			background-size: contain;
+		}
+		& .twitter a {
+			background: url("../images/twitter.png") no-repeat center 0;
+			background-size: contain;
+		}
+		& .instagram a {
+			background: url("../images/instagram.png") no-repeat center 0;
+			background-size: contain;
+		}
+	}
+}
+
+.custom-container.container {
+	padding : 0;
+	width: 1300px;
+}
+
+
+.language-search, .university-search {
+	& .form-group {
+		margin-left: 0;
+		margin-right: 0;
+	}
+
+	& #step1 {
+		display: none;
+	}
+}
+
+.university-search {
+	#step1 {
+		.btn-group {
+			width: 49%;
+			padding: 2px;
+			margin-top: 5px;
+			@media (max-width: $screen-md) {
+				width: 100%;
+			}
+
+			& .btn {
+				width: 100%;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: normal;
+			}
+		}
+	}
+}
+
+#step1 {
+
+	& .form-group {
+		margin-top: 35px;
+	}
+
+	& .selectize-control {
+		margin-top: 20px;
+		margin-bottom: 45px;
+	}
+}
+
+#step2 {
+	.btn-group {
+		width: 50%;
+		padding: 2px;
+		margin-top: 5px;
+		@media (max-width: $screen-md) {
+			width: 100%;
+		}
+
+		& .btn {
+			width: 100%;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: pre-wrap;
+		}
+	}
+	& .selectize-control {
+		padding-bottom: 10
+	}
+}
+
+// Search results
+.new-search {
+		margin-bottom: 45px;
+		margin-top: 0;
+
+	& .btn-search-by {
+		width: 100%;
+		text-align: center;
+		text-indent: 0;
+		color: $default-text;
+		background-color: $primary-blue;
+
+		&:hover {
+			color: $alt-text;
+			background-color: $primary-orange;
+		}
+	}
+}
+	
+.search-results {
+	&.row {
+		.subject-box {
+			margin-left: 0;
+			margin-right: 0;
+		}
+	}
+	& .search-by-buttons {
+			margin-bottom: 45px;
+			margin-top: 0;
+
+		& .btn-search-by {
+			width: 100%;
+			text-align: center;
+			text-indent: 0;
+			color: $default-text;
+			background-color: $primary-blue;
+
+			&:hover {
+				color: $alt-text;
+				background-color: $primary-orange;
+			}
+		}
+	}
+
+	& .sort {
+		padding-bottom: 10px;
+	}
+
+	& .subject {
+		margin-bottom: 72px;
+
+		& .subject-university {
+
+			& .university-logo {
+				height: 70px;
+				white-space: nowrap;
+			}
+			& .university-text {
+				height: 40px;
+				white-space: pre-line;
+				p {
+					vertical-align: middle;
+					display: inline-block;
+				}
+			}
+			.helper {
+				display: inline-block;
+				height: 100%;
+				vertical-align: middle;
+			}
+
+			& .state {
+				padding: 25px;
+				text-align: center;
+			}
+		}
+
+		& .subject-heading {
+			padding-top: 10px;
+			padding-bottom: 10px;
+
+			.title {
+				color: #7EB1DC;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+			}
+			.language a {
+				color: #7EB1DC;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+			}
+		}
+
+		& .subject-information {
+			& table {
+				margin-bottom: 0;
+			}
+		}
+
+		& .subject-table {
+			margin-bottom: 0;
+			height: 330px;
+			& td {
+				text-align: center;
+				vertical-align: middle;
+			}
+			th {
+				padding: 10px;
+				border-right: 1px solid $search-box-border;
+			}
+		}
+	}
+	& .subject-more {
+		margin-top: 10px;
+	}
+
+	@media print {
+		.subject-more {
+			display: none;
+		}
+		.search-by-buttons {
+			display: none;
+		}
+	    a:link:after,
+	    a:visited:after {
+	        content: "" !important;
+	    }
+	    a[href]:after {
+    		content: none !important;
+  		}
+  		.subject-table {
+			margin-bottom: 0;
+			height: 200px;
+		}
+		.subject-heading {
+			padding-top: 0;
+			padding-bottom: 0;
+			min-height: 0;
+			height: 50px;
+		}
+		.university-text {
+			height: 10px;
+		}
+	}
+}
+
+
+// FAQ Page
+.faq {
+
+	& .col-md-9 {
+		border-right: 1px solid #dbdbdb;
+		padding-right: 30px;
+
+		@media (max-width: $screen-sm) {
+			border-right: 0;
+			padding-right: 20px;
+		}
+	}
+
+	& .affix, & .affix-top{
+			top: 20px;
+		& li a {
+			color: $alt-text;
+		}
+		& .active {
+			color: $primary-blue;
+			border-left: 3px solid;
+		}
+	}
+	& .panel {
+		&.active{
+			& .panel-heading {
+				background-color: $primary-blue;
+				color: $default-text;
+			}
+		}
+		& .panel-heading {
+			background-color: $default-background;
+			color: $alt-text;
+			cursor: pointer;
+
+			&:hover {
+				cursor: pointer;
+				background-color: $primary-orange;
+				color: $alt-text;
+			}
+
+			& .panel-title {
+				text-decoration: none;
+			}
+		}
+	}
+}
+
+
+//  What languages page
+
+.what-languages {
+
+	& .col-xs-8 {
+		border-right: 1px solid #dbdbdb;
+		padding-right: 30px;
+
+		@media (max-width: $screen-sm) {
+			border-right: 0;
+			padding-right: 20px;
+		}
+	}
+
+	& .nav{
+		& ul {
+			& .sub-menu {
+
+				& a {
+					color: $link_text;
+					font-size: 12px;
+					padding-top: 1px;
+					padding-bottom: 1px;
+					padding-left: 30px;
+				}
+			}
+		}
+		& .active {
+			color: $primary-blue;
+			border-left: 3px solid;
+		}
+	}
+
+	& .search-by-buttons {
+			margin-bottom: 45px;
+			margin-top: 0;
+
+		& .btn-search-by {
+			width: 100%;
+			text-align: center;
+			text-indent: 0;
+			color: $default-text;
+			background-color: $primary-blue;
+
+			&:hover {
+				color: $alt-text;
+				background-color: $primary-orange;
+			}
+		}
+	}
+}
+
+// Where can I study indigenous languages page
+
+.indigenous-languages {
+	& .search-by-buttons {
+			margin-bottom: 45px;
+			margin-top: 0;
+
+		& .btn-search-by {
+			width: 100%;
+			text-align: center;
+			text-indent: 0;
+			color: $default-text;
+			background-color: $primary-blue;
+
+			&:hover {
+				color: $alt-text;
+				background-color: $primary-orange;
+			}
+		}
+	}
+	& .col-md-9 {
+		border-right: 1px solid #dbdbdb;
+		padding-right: 30px;
+
+		@media (max-width: $screen-sm) {
+			border-right: 0;
+			padding-right: 20px;
+		}
+	}
+
+	& .affix, & .affix-bottom{
+		position: fixed;
+		top: 0;
+	}
+
+	& .affix, & .affix-top, & .affix-bottom{
+		top: 20px;
+
+		& li a {
+			color: $alt-text;
+		}
+		& .active {
+			color: $primary-blue;
+			border-left: 3px solid;
+		}
+	}
+}
+
+.table-of-contents {
+	background-color: #E9E7E8;
+	padding: 10px;
+
+	li a {
+		cursor: pointer;
+	}
+
+	li a:hover {
+		cursor: pointer;
+		color: #3278B3;
+		background-color: #E9E7E8;
+	}
+	li a:active {
+		background-color: #E9E7E8;
+	}
+}
+
+// About Page
+
+.about {
+	& .col-md-9 {
+		border-right: 1px solid #dbdbdb;
+		padding-right: 30px;
+
+		@media (max-width: $screen-sm) {
+			border-right: 0;
+			padding-right: 20px;
+		}
+	}
+	
+	& .affix, & .affix-bottom{	
+		position: fixed;
+		top: 0;
+	}
+
+	& .affix, & .affix-top, & .affix-bottom{
+		top: 20px;
+
+		& li a {
+			color: $alt-text;
+		}
+		& .active {
+			color: $primary-blue;
+			border-left: 3px solid;
+		}
+	}
+}
+
+// Can I study a language at another uni page
+
+.other-uni {
+	& .col-md-4 {
+		border-left: 1px solid #dbdbdb;
+		padding-left: 30px;
+
+		@media (max-width: $screen-sm) {
+			border-left: 0;
+			padding-left: 20px;
+		}
+	}
+
+	& #nav {
+		h5 {
+		    color: #235185;
+   			padding: 0 15px;
+		}
+		& a {
+			color: $alt-text;
+			font-size: 14px;
+			padding-top: 1px;
+			padding-bottom: 1px;
+			padding-left: 30px;
+		}
+	}
+}
+
+//  Why study languages page
+.why-study {
+
+	& .col-md-9 {
+		border-right: 1px solid #dbdbdb;
+		padding-right: 30px;
+
+		@media (max-width: $screen-sm) {
+			border-right: 0;
+			padding-right: 20px;
+		}
+	}
+
+	& .affix, & .affix-bottom{
+		position: fixed;
+		top: 0;
+	}
+
+	& .affix, & .affix-top, & .affix-bottom{
+		top: 20px;
+
+		& li a {
+			color: $alt-text;
+		}
+		& .active {
+			color: $primary-blue;
+			border-left: 3px solid;
+		}
+	}
+
+}
+
+// Individual/Category Language
+.individual-language, .category-language {
+	h1 {
+		text-transform: uppercase;
+	}
+	.btn-search-by {		
+		width: 100%;
+		text-align: center;
+		text-indent: 0;
+		color: $default-text;
+		background-color: $primary-blue;
+	
+		&:hover {
+			background-color: $primary-orange;
+			color: $alt-text;
+		}
+	}
+	.nav {
+		li {
+			& a {
+				color: $link_text;
+				font-size: 12px;
+				padding-top: 1px;
+				padding-bottom: 1px;
+				padding-left: 10px;
+			}
+		}
+	}
+}
+
+// Bulk upload
+.bg-warning {
+	padding: 15px;
+}
+
+#upload {
+	margin-top:10px;
+}
+
+#top-div {
+	margin-top: 20px;
+}

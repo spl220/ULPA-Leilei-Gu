@@ -1,0 +1,42 @@
+# Bleeding edge Django
+django==1.8.1
+
+# Configuration
+django-environ==0.3.0
+django-secure==1.0.1
+
+#XLSX Reader
+openpyxl==2.2.5
+
+# Forms
+django-braces==1.8.0
+django-crispy-forms==1.4.0
+django-floppyforms==1.4.0
+
+
+# Models
+django-model-utils==2.2
+django-select-multiple-field==0.4.0
+
+# Images
+Pillow==2.8.1
+
+# For the persistence stores
+psycopg2==2.6
+
+# Unicode slugification
+unicode-slugify==0.1.3
+django-autoslug==1.7.2
+
+# Time zones support
+pytz==2015.2
+
+# Your custom requirements go here
+django-markdown-deux==1.0.5
+markdown2==2.3.0
+lettuce==0.2.20
+django-lockdown==1.1
+django-widget-tweaks==1.4.1
+pynliner==0.5.2
+BeautifulSoup==3.2.1
+django-bootstrap-pagination==1.5.1
