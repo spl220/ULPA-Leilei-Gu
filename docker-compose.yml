@@ -41,8 +41,8 @@ services:
     restart: always
 
 volumes:
-  postgres_data: {}
-  postgres_backup: {}
+  postgres_data: /ulpa/pg_data
+  postgres_backup: /ulpa/pg_backup
 
 networks:
   static-network:
