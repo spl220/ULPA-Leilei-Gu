@@ -4,8 +4,8 @@ services:
   postgres:
     build: ./compose/postgres
     volumes:
-      - postgres_data:/var/lib/postgresql/data
-      - postgres_backup:/backups
+      - /ulpa/pg_data:/var/lib/postgresql/data
+      - /ulpa/pg_backup:/backups
     networks:
       static-network:
         ipv4_address: 172.18.0.2
@@ -39,10 +39,6 @@ services:
       static-network:
         ipv4_address: 172.18.0.3
     restart: always
-
-volumes:
-  postgres_data: /ulpa/pg_data
-  postgres_backup: /ulpa/pg_backup
 
 networks:
   static-network:
