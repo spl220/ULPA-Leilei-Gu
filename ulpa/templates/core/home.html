@@ -1,0 +1,107 @@
+{% extends "home_base.html" %}
+
+{% block title %}ULPA Home{% endblock %}
+{% load markdown_deux_tags %}
+
+{% block nav %}
+    {% include "includes/nav.html" with active_tab='home' %}
+{% endblock %}
+
+{% block search_div %}
+        
+        <div class="row">
+            <div class="home-page-heading col-xs-10  col-sm-5 col-xs-offset-1 col-sm-offset-0 col-md-offset-1">
+                <h1>Do you want to study a language at university?</h1>
+            </div>
+            <div class="search-by-buttons hidden-xs col-sm-7 col-md-5 col-md-offset-1">
+                <ul>
+                    <li class="list-unstyled">
+                        <a class="btn btn-search-by" href="{% url 'languages:language-search' %}">SEARCH BY LANGUAGE <div class="search-arrow "></div></a>
+                    </li>
+                    <li class="list-unstyled">
+                        <a class="btn btn-search-by" href="{% url 'universities:university-search' %}">SEARCH BY UNIVERSITY <div class="search-arrow "></div></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="search-by-buttons visible-xs-block col-xs-12">
+                <li class="list-unstyled">
+                    <a class="btn btn-search-by" href="{% url 'languages:language-search' %}">SEARCH BY LANGUAGE</a>
+                </li>
+                <li class="list-unstyled">
+                    <a class="btn btn-search-by" href="{% url 'universities:university-search' %}">SEARCH BY UNIVERSITY</a>
+                </li>
+            </div>
+        </div>
+
+{% endblock search_div %}
+
+{% block learn_more_div %}
+
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="row">
+                    <a href="{% url 'core:why-study-languages' %}">
+                        <div class="why-study-logo"></div>
+                    </a>
+                    <p class="learn-more-text text-center">
+                        Why study languages?
+                    </p>
+                    <div  class="col-sm-8 col-sm-offset-2 hidden-xs ">
+                        <a class="btn btn-ulpa btn-default" href="{% url 'core:why-study-languages' %}">LEARN MORE</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="row">
+                    <a href="{% url 'core:where-can-study-indigenous-languages' %}">
+                        <div class="indigenous-logo"></div>
+                    </a>
+                    <p class="learn-more-text text-center">
+                        Where can I study an Australian Indigenous language?
+                    </p>
+                    <div  class="col-sm-8 col-sm-offset-2 hidden-xs">
+                        <a class="btn btn-ulpa btn-default" href="{% url 'core:where-can-study-indigenous-languages' %}">LEARN MORE</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="row">
+                    <a href="{% url 'core:can-study-at-university-other-than-own' %}">
+                        <div class="other-university-logo"></div>
+                    </a>
+                    <p class="learn-more-text  text-center">
+                        Can I study a language taught at a university other than my own?
+                    </p>
+                    <div class="col-sm-8 col-sm-offset-2 hidden-xs">
+                        <a class="btn btn-ulpa btn-default" href="{% url 'core:can-study-at-university-other-than-own' %}">LEARN MORE</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="row">
+                    <a href="{% url 'faqs:faqs' %}">
+                        <div class="faq-logo"></div>
+                    </a>
+                    <p class="learn-more-text text-center">
+                        Have another question on languages? Check out our FAQ section.
+                    </p>
+                    <div  class="col-sm-8 col-sm-offset-2 hidden-xs">
+                        <a class="btn btn-ulpa btn-default" href="{% url 'faqs:faqs' %}">LEARN MORE</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+{% endblock learn_more_div %}
+
+{% block what_languages_div %}
+<div class="row">
+    <div class="col-sm-5 col-sm-offset-7">
+        <h1>What languages can I study?</h1>
+    </div>
+    <div class="col-sm-5 col-md-3 col-sm-offset-7">
+        <a class="btn btn-search-by" href="{% url 'core:what-languages-can-i-study' %}">FIND OUT MORE<div class="search-arrow "></div></a>
+    </div>
+</div>
+{% endblock what_languages_div %}
