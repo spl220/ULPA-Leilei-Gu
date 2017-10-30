@@ -1,0 +1,137 @@
+{% extends "nav_base.html" %}
+{% load staticfiles i18n %}
+{% load bootstrap_pagination %}
+
+{% block title %}
+    Subject Search Results
+{% endblock title %}
+
+{% block content %}
+
+
+<div class="search-results row">
+
+    <h1 class="col-xs-12">YOUR SEARCH RESULTS</h1>
+
+    <div class="search-by-buttons hidden-xs hidden-sm col-sm-12">
+        <div class="col-xs-6">
+            <a class="btn btn-search-by" href="{% url 'languages:language-search' %}">NEW SEARCH BY LANGUAGE</a>
+        </div>
+        <div class="col-xs-6">
+            <a class="btn btn-search-by" href="{% url 'universities:university-search' %}">NEW SEARCH BY UNIVERSITY</a>
+        </div>
+    </div>
+    <div class="search-by-buttons visible-xs-block visible-sm-block col-xs-12">
+        <li class="list-unstyled">
+            <a class="btn btn-search-by" href="{% url 'languages:language-search' %}">NEW SEARCH BY LANGUAGE <div class="search-arrow "></div></a>
+        </li>
+        <li class="list-unstyled">
+            <a class="btn btn-search-by" href="{% url 'universities:university-search' %}">NEW SEARCH BY UNIVERSITY <div class="search-arrow "></div></a>
+        </li>
+    </div>
+
+    
+        <div class="sort col-xs-12 ">
+            <div class="dropdown col-md-4">
+                <button class="btn btn-default dropdown-toggle" type="button" id="sortDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Sort by: {{sort_order|default:"Language"|title}}
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="sortDropdown">
+                    <li><a href="{% url 'subjects:subject-search-results' %}?{{search_parameters.urlencode}}&amp;sort_by=language">Language</a></li>
+                    <li><a href="{% url 'subjects:subject-search-results' %}?{{search_parameters.urlencode}}&amp;sort_by=university">University</a></li>
+                </ul>
+                <a href="{% url 'subjects:printable-subject-search-results' %}?{{search_parameters.urlencode}}" class="btn btn-default" type="button" id="print" aria-labelledby="printResults" aria-expanded="true" target="_blank">
+                    Print View
+                </a>
+            </div>                
+            <div class = "dropdown col-md-offset-4 col-md-4">
+                <button class="btn btn-default dropdown-toggle" type="button" id="filterDropdown" data-toggle="collapse" data-target="#filter-collapse" role="tab" href="#filter-collapse">
+                    <span class="glyphicon glyphicon-filter">Filter</span>
+                </button>
+                      <div id="filter-collapse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="filter">
+                       <div class = "study-choices"><strong>Study Chioces</strong><br>
+                       <label class = "radio-inline" data-toggle="tooltip"  title="study entirely online"><input type="radio" name="study-choice-radio" id ="study-choice-online" value ="online" onclick = "online_disabled()">Online</label>
+                       <label class = "radio-inline" data-toggle="tooltip"  title="study on-campus(but don't mind if a small portion is online)"><input type="radio" name="study-choice-radio" id="study-choice-oncampus" value="on-campus" onclick="oncampus_disabled()">On campus</label>
+                       </div>
+                       <div class = "intensities"><strong>Intensities</strong><br>
+                       <label class ="radio-inline" data-toggle="tooltip"  title="do an intensive course (eg. summer school)"><input type="radio" name="intensities-radio" id="intensity-intensive" value="intensive" onclick="showIntensiveSubjects()">Intensive course</label>
+                       <label class = "radio-inline" data-toggle="tooltip"  title="study over a regular semester"><input type="radio" name="intensities-radio" id="intensity-regular" value="regular" onclick="showRegularSubjects()">Regular semester</label> 
+                       </div>
+                      <button type="button" onclick="myFilterFunction()">Filter</button>
+                      </div>
+             </div>
+         </div>
+         <div class="sort col-xs-12 ">
+            <div class="dropdown col-md-4">
+                 {% if study_choices %}
+                 <p hidden id="study_choices">{{study_choices}}</p>
+                 {% endif %}
+
+                 {% if intensities%}
+                 <p hidden id="intensities">{{intensities}}</p>
+                 {% endif %}
+
+                 {% if study_choices_disable %}
+                 <p hidden id="study_choices_disable">{{study_choices_disable}}</p>
+                 {% endif %}
+
+                 {% if intensities_disable %}
+                 <p hidden id="intensities_disable">{{intensities_disable}}</p>
+                 {% endif %}
+               {% if online_subjects %}
+               <p name ="onlineInfo" hidden="hidden" id="online_subjects">There are <strong>{{online_subjects}}</strong> online subjects available</p>
+               {% endif %}
+               {% if oncampus_subjects %}
+               <p name ="oncampusInfo" hidden="hidden" id="oncampus_subjects">There are <strong>{{oncampus_subjects}}</strong> subjects available on campus</p>
+               {% endif %}
+               {% if online_regular_subjects %}
+               <p name ="onlineInfo" hidden="hidden" id="online_regular_subjects">There are <strong>{{online_regular_subjects}}</strong> regular subjects available online</p>
+               {% endif %}
+               {% if oncampus_regular_subjects %}
+               <p name = "oncampusInfo" hidden="hidden" id="oncampus_regular_subjects">There are <strong>{{oncampus_regular_subjects}}</strong> regular subjects available on campus</p>
+               {% endif %}
+               {% if online_intensive_subjects %}
+               <p name ="onlineInfo" hidden="hidden" id="online_intensive_subjects">There are <strong>{{online_intensive_subjects}}</strong> intensive subjects available online</p>
+               {% endif %}
+               {% if oncampus_intensive_subjects %}
+               <p name ="oncampusInfo" hidden="hidden"id="oncampus_intensive_subjects">There are <strong>{{oncampus_intensive_subjects}}</strong> intensive subjects available on campus</p>
+               {% endif %}
+              </div>
+          </div>
+
+    {% for subject in subjects %}
+        {% include 'subjects/includes/search_results_subject.html' with subject=subject%}
+    {% empty %}
+        <div class="col-xs-12">
+            <h2>No Subjects Found</h2>
+        </div>
+    {% endfor %}
+</div>
+
+    {% if subjects %}
+
+    <div class="row">
+        <div class="step-links col-xs-12 visible-xs visible-sm text-center">
+            {% bootstrap_paginate subjects range=5 %}
+        </div>
+        <div class="step-links col-xs-12 hidden-xs hidden-sm text-center">
+            {% bootstrap_paginate subjects range=10 %}
+        </div>
+    </div>
+
+    <div class="new-search visible-xs-block visible-sm-block row">
+        <li class="list-unstyled col-xs-12">
+            <a class="btn btn-search-by" href="{% url 'languages:language-search' %}">NEW SEARCH BY LANGUAGE <div class="search-arrow "></div></a>
+        </li>
+        <li class="list-unstyled col-xs-12">
+            <a class="btn btn-search-by" href="{% url 'universities:university-search' %}">NEW SEARCH BY UNIVERSITY <div class="search-arrow "></div></a>
+        </li>
+    </div>
+    {% endif %}
+{% block extra_scripts %}
+     
+    <script src="{% static 'js/search_results.js' %}"></script>
+{% endblock extra_scripts %}
+
+{% endblock %}
